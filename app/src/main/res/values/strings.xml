@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_001" formatted="false">"Direct touch"</string>
+    <string name="text_002" formatted="false">"Touchpad with buttons"</string>
+    <string name="text_003" formatted="false">"Gesture touchpad"</string>
+    <string name="text_004" formatted="false">"Direct touch mode: multitouch."</string>
+    <string name="text_005" formatted="false">"Gesture touchpad: tap to click, hold to drag. Pinch for local zoom; at 1×, move two fingers together to scroll; when zoomed, use two fingers to pan the image."</string>
+    <string name="text_006" formatted="false">"Touchpad with transparent buttons over the image. Hold Left and move another finger to drag. Pinch for local zoom; when zoomed, use two fingers to pan the image on A."</string>
+    <string name="text_007" formatted="false">"Connection: "</string>
+    <string name="text_008" formatted="false">"Direct USB → "</string>
+    <string name="text_009" formatted="false">". On B, accept “Allow USB debugging”; you can allow A permanently."</string>
+    <string name="text_010" formatted="false">"USB ADB did not connect"</string>
+    <string name="text_011" formatted="false">"Network ADB → "</string>
+    <string name="text_012" formatted="false">". Accept the authorization prompt on B if shown."</string>
+    <string name="text_013" formatted="false">"ADB did not connect"</string>
+    <string name="text_014" formatted="false">" copied to B."</string>
+    <string name="text_015" formatted="false">"The server did not open all channels. Check the SERVER errors in Console."</string>
+    <string name="text_016" formatted="false">"Invalid video handshake"</string>
+    <string name="text_017" formatted="false">"Invalid video dimensions"</string>
+    <string name="text_018" formatted="false">"Connected: "</string>
+    <string name="text_019" formatted="false">"The video stream closed"</string>
+    <string name="text_020" formatted="false">"Scrcpy socket unavailable"</string>
+    <string name="text_021" formatted="false">"Connection cancelled"</string>
+    <string name="text_022" formatted="false">"Invalid SYNC response"</string>
+    <string name="text_023" formatted="false">"Unknown control message: "</string>
+    <string name="text_024" formatted="false">"Control channel: "</string>
+    <string name="text_025" formatted="false">"Audio is unavailable on B; continuing with video."</string>
+    <string name="text_026" formatted="false">"Audio stopped: "</string>
+    <string name="text_027" formatted="false">"Invalid PCM packet"</string>
+    <string name="text_028" formatted="false">"Unknown codec: "</string>
+    <string name="text_029" formatted="false">"Invalid audio configuration"</string>
+    <string name="text_030" formatted="false">"Missing audio configuration"</string>
+    <string name="text_031" formatted="false">"Invalid media packet: "</string>
+    <string name="text_032" formatted="false">"Recording ended because the video configuration changed (for example, rotation). Export is available in the menu."</string>
+    <string name="text_033" formatted="false">"Recording stopped: "</string>
+    <string name="text_034" formatted="false">"Packet too large for decoder"</string>
+    <string name="text_035" formatted="false">"Video decoder unavailable; try h264 or a lower resolution"</string>
+    <string name="text_036" formatted="false">"Connect phone B first."</string>
+    <string name="text_037" formatted="false">"Shell commands stopped."</string>
+    <string name="text_038" formatted="false">"Listing: "</string>
+    <string name="text_039" formatted="false">"Stopped manually"</string>
+    <string name="text_040" formatted="false">"Cancelled"</string>
+    <string name="text_041" formatted="false">"Invalid mouse button"</string>
+    <string name="text_042" formatted="false">"The control queue is full; stopping the session to release all touches."</string>
+    <string name="text_043" formatted="false">"Clipboard too large"</string>
+    <string name="text_044" formatted="false">"Incomplete ADB header"</string>
+    <string name="text_045" formatted="false">"Invalid USB ADB magic"</string>
+    <string name="text_046" formatted="false">"Invalid USB ADB packet length: "</string>
+    <string name="text_047" formatted="false">"Invalid USB endpoint"</string>
+    <string name="text_048" formatted="false">"Original • no resizing"</string>
+    <string name="text_049" formatted="false">"Unlimited FPS"</string>
+    <string name="text_050" formatted="false">"Automatic"</string>
+    <string name="text_051" formatted="false">"Lock at 0°"</string>
+    <string name="text_052" formatted="false">"Lock at 90°"</string>
+    <string name="text_053" formatted="false">"Lock at 180°"</string>
+    <string name="text_054" formatted="false">"Lock at 270°"</string>
+    <string name="text_055" formatted="false">"Disabled"</string>
+    <string name="text_056" formatted="false">"No crop"</string>
+    <string name="text_057" formatted="false">"0 • Main display"</string>
+    <string name="text_058" formatted="false">"ID 0 • if available on B"</string>
+    <string name="text_059" formatted="false">"ID 1 • if available on B"</string>
+    <string name="text_060" formatted="false">"Default options"</string>
+    <string name="text_061" formatted="false">"Keyframe every 1 s"</string>
+    <string name="text_062" formatted="false">"Keyframe every 2 s"</string>
+    <string name="text_063" formatted="false">"No extra options"</string>
+    <string name="text_064" formatted="false">"Debug logging"</string>
+    <string name="text_065" formatted="false">"16:9 camera"</string>
+    <string name="text_066" formatted="false">"Automatic / default"</string>
+    <string name="text_067" formatted="false">"Invalid ADB key"</string>
+    <string name="text_068" formatted="false">"Invalid ADB certificate"</string>
+    <string name="text_069" formatted="false">"Scrcpy • direct USB / wireless • server "</string>
+    <string name="text_070" formatted="false">"USB permission on A was denied or the cable was unplugged."</string>
+    <string name="text_071" formatted="false">"USB permission was not granted. Tap Connect USB to try again."</string>
+    <string name="text_072" formatted="false">"USB cable disconnected. Reconnect it for automatic detection."</string>
+    <string name="text_073" formatted="false">"A does not report USB host/OTG support."</string>
+    <string name="text_074" formatted="false">"No USB ADB phone found. Check USB debugging on B, a DATA cable, the host/OTG role on A, and that B is unlocked."</string>
+    <string name="text_075" formatted="false">"Choose phone B"</string>
+    <string name="text_076" formatted="false">"Cancel"</string>
+    <string name="text_077" formatted="false">"Waiting for USB permission on A for "</string>
+    <string name="text_078" formatted="false">"USB permission: "</string>
+    <string name="text_079" formatted="false">"USB: connecting to "</string>
+    <string name="text_080" formatted="false">"USB settings: "</string>
+    <string name="text_081" formatted="false">"by sw3gmach1n3  ·  A controls B"</string>
+    <string name="text_082" formatted="false">"Disconnected"</string>
+    <string name="text_083" formatted="false">"Connection"</string>
+    <string name="text_084" formatted="false">"Settings"</string>
+    <string name="text_085" formatted="false">"Console"</string>
+    <string name="text_086" formatted="false">"Direct USB • recommended"</string>
+    <string name="text_087" formatted="false">"Connect A to B with a data cable. A must be the USB host/OTG device; enable USB debugging on B. Allow USB access on A and accept A’s ADB key on B."</string>
+    <string name="text_088" formatted="false">"Detecting USB phones…"</string>
+    <string name="text_089" formatted="false">"Auto-connect USB while the app is in the foreground"</string>
+    <string name="text_090" formatted="false">"Connect USB"</string>
+    <string name="text_091" formatted="false">"Refresh USB devices"</string>
+    <string name="text_092" formatted="false">"No IP, wireless pairing or PC required. If B does not appear, check the OTG role / “USB controlled by” and the data cable."</string>
+    <string name="text_093" formatted="false">"Wireless / IP • optional"</string>
+    <string name="text_094" formatted="false">"Phone B • network"</string>
+    <string name="text_095" formatted="false">"Secondary option: A and B must be able to reach each other over the network."</string>
+    <string name="text_096" formatted="false">"B IP address / hostname"</string>
+    <string name="text_097" formatted="false">"ADB CONNECTION port"</string>
+    <string name="text_098" formatted="false">"Main Wireless debugging port"</string>
+    <string name="text_099" formatted="false">"Connect over network"</string>
+    <string name="text_100" formatted="false">"Wireless pairing • Android 11+"</string>
+    <string name="text_101" formatted="false">"On B: Wireless debugging → Pair with a code. The pairing port differs from the connection port."</string>
+    <string name="text_102" formatted="false">"PAIRING port"</string>
+    <string name="text_103" formatted="false">"Example: 37123"</string>
+    <string name="text_104" formatted="false">"Pairing code"</string>
+    <string name="text_105" formatted="false">"Code shown on B"</string>
+    <string name="text_106" formatted="false">"Pair A with B"</string>
+    <string name="text_107" formatted="false">"Classic ADB TCP"</string>
+    <string name="text_108" formatted="false">"Optional: run adb tcpip 5555 from a PC, then enter B’s IP and port 5555. This command is NOT required for direct USB."</string>
+    <string name="text_109" formatted="false">"Export last recording / screenshot"</string>
+    <string name="text_110" formatted="false">"Session settings"</string>
+    <string name="text_111" formatted="false">"Applies to the next connection. Values are saved automatically."</string>
+    <string name="text_112" formatted="false">"USB quality • 1920 px / 60 FPS / 24 Mbps"</string>
+    <string name="text_113" formatted="false">"Balanced profile • 1280 / 60 FPS / 8 Mbps"</string>
+    <string name="text_114" formatted="false">"Low bandwidth profile • 800 / 30 FPS / 2 Mbps"</string>
+    <string name="text_115" formatted="false">"Enabled"</string>
+    <string name="text_116" formatted="false">"Available values for "</string>
+    <string name="text_117" formatted="false">"Save settings"</string>
+    <string name="text_118" formatted="false">"Settings saved"</string>
+    <string name="text_119" formatted="false">"Check: "</string>
+    <string name="text_120" formatted="false">"Restore defaults"</string>
+    <string name="text_121" formatted="false">"Reset session settings? The IP address and pairing key will be kept."</string>
+    <string name="text_122" formatted="false">"Reset"</string>
+    <string name="text_123" formatted="false">"Enter manually…"</string>
+    <string name="text_124" formatted="false">"Help and commands"</string>
+    <string name="text_125" formatted="false">"Search the manual"</string>
+    <string name="text_126" formatted="false">"Example: audio, --crop, multitouch"</string>
+    <string name="text_127" formatted="false">"No results"</string>
+    <string name="text_128" formatted="false">"Copy"</string>
+    <string name="text_129" formatted="false">"Clear"</string>
+    <string name="text_130" formatted="false">"Export"</string>
+    <string name="text_131" formatted="false">"Full log saved to file. The console displays the last 2 MB."</string>
+    <string name="text_132" formatted="false">"Shell command on B: wm size / getprop …"</string>
+    <string name="text_133" formatted="false">"Run on B"</string>
+    <string name="text_134" formatted="false">"Connect phone B before running commands."</string>
+    <string name="text_135" formatted="false">"Port must be between 1 and 65535"</string>
+    <string name="text_136" formatted="false">"Wait for the pairing result"</string>
+    <string name="text_137" formatted="false">"Enter phone B’s IP address"</string>
+    <string name="text_138" formatted="false">"Settings: "</string>
+    <string name="text_139" formatted="false">"Enter the IP and the 6-digit pairing code"</string>
+    <string name="text_140" formatted="false">"Pairing…"</string>
+    <string name="text_141" formatted="false">"Paired successfully with "</string>
+    <string name="text_142" formatted="false">". Use the CONNECTION port for the session."</string>
+    <string name="text_143" formatted="false">"Paired. You can connect phone B."</string>
+    <string name="text_144" formatted="false">"Pairing failed: "</string>
+    <string name="text_145" formatted="false">"Pairing failed; see Console"</string>
+    <string name="text_146" formatted="false">"Session menu"</string>
+    <string name="text_147" formatted="false">"Initialization: "</string>
+    <string name="text_148" formatted="false">"Session"</string>
+    <string name="text_149" formatted="false">"Close the menu and return to control"</string>
+    <string name="text_150" formatted="false">"Back to control"</string>
+    <string name="text_151" formatted="false">"Session closed"</string>
+    <string name="text_152" formatted="false">"Remote control"</string>
+    <string name="text_153" formatted="false">"Choose an interaction mode. The menu stays open until you close it."</string>
+    <string name="text_154" formatted="false">"Direct touch\nMultitouch"</string>
+    <string name="text_155" formatted="false">"Touchpad\nGestures"</string>
+    <string name="text_156" formatted="false">"Touchpad\nButtons"</string>
+    <string name="text_157" formatted="false">"Left and Right overlay the image with transparent interiors. You can hold Left while moving the cursor."</string>
+    <string name="text_158" formatted="false">"Local zoom on A • Touchpad modes"</string>
+    <string name="text_159" formatted="false">"Image: %.2f× • maximum 6×"</string>
+    <string name="text_160" formatted="false">"Pinch zooms and crops the image only on A. When zoomed, use two fingers to pan; at 1×, move two fingers together to scroll on B. Direct touch resets to 1×."</string>
+    <string name="text_161" formatted="false">"Actions\nand tools"</string>
+    <string name="text_162" formatted="false">"Console\nand commands"</string>
+    <string name="text_163" formatted="false">"Disconnect session"</string>
+    <string name="text_164" formatted="false">"The control channel is not active"</string>
+    <string name="text_165" formatted="false">"Actions and tools"</string>
+    <string name="text_166" formatted="false">"‹ Control modes"</string>
+    <string name="text_167" formatted="false">"Navigation on phone B"</string>
+    <string name="text_168" formatted="false">"←\nBack"</string>
+    <string name="text_169" formatted="false">"▣\nRecents"</string>
+    <string name="text_170" formatted="false">"Volume"</string>
+    <string name="text_171" formatted="false">"Volume −"</string>
+    <string name="text_172" formatted="false">"Volume +"</string>
+    <string name="text_173" formatted="false">"Screen and panels"</string>
+    <string name="text_174" formatted="false">"Screen\noff"</string>
+    <string name="text_175" formatted="false">"Screen\non"</string>
+    <string name="text_176" formatted="false">"Rotate\nscreen"</string>
+    <string name="text_177" formatted="false">"Notifications"</string>
+    <string name="text_178" formatted="false">"Quick\nsettings"</string>
+    <string name="text_179" formatted="false">"Close\nB panels"</string>
+    <string name="text_180" formatted="false">"Text and apps"</string>
+    <string name="text_181" formatted="false">"Send text\nClipboard A → B"</string>
+    <string name="text_182" formatted="false">"Receive\nClipboard B → A"</string>
+    <string name="text_183" formatted="false">"Launch an app on B"</string>
+    <string name="text_184" formatted="false">"Screenshots and files"</string>
+    <string name="text_185" formatted="false">"PNG screenshot"</string>
+    <string name="text_186" formatted="false">"Export last\nscreenshot / recording"</string>
+    <string name="text_187" formatted="false">"Phone B information • results appear in Console"</string>
+    <string name="text_188" formatted="false">"Displays"</string>
+    <string name="text_189" formatted="false">"Encoders"</string>
+    <string name="text_190" formatted="false">"Apps"</string>
+    <string name="text_191" formatted="false">"Cameras"</string>
+    <string name="text_192" formatted="false">"Camera sizes"</string>
+    <string name="text_193" formatted="false">"Open session console"</string>
+    <string name="text_194" formatted="false">"Results are sent to the session console."</string>
+    <string name="text_195" formatted="false">"◧  Left"</string>
+    <string name="text_196" formatted="false">"Right  ◨"</string>
+    <string name="text_197" formatted="false">"Left mouse button; hold to drag"</string>
+    <string name="text_198" formatted="false">"Right mouse button"</string>
+    <string name="text_199" formatted="false">"Console • active session"</string>
+    <string name="text_200" formatted="false">"Shell command on B"</string>
+    <string name="text_201" formatted="false">"Run"</string>
+    <string name="text_202" formatted="false">"Stop shell commands"</string>
+    <string name="text_203" formatted="false">"Send text to B"</string>
+    <string name="text_204" formatted="false">"Paste on B"</string>
+    <string name="text_205" formatted="false">"Clipboard only"</string>
+    <string name="text_206" formatted="false">"B app package or name"</string>
+    <string name="text_207" formatted="false">"Launch"</string>
+    <string name="text_208" formatted="false">"No video frame yet"</string>
+    <string name="text_209" formatted="false">"Screenshot saved: "</string>
+    <string name="text_210" formatted="false">"Screenshot saved; export it from the menu."</string>
+    <string name="text_211" formatted="false">"Screenshot: "</string>
+    <string name="text_212" formatted="false">"Closing session…"</string>
+    <string name="text_213" formatted="false">"Connected to "</string>
+    <string name="text_214" formatted="false">"Phone B"</string>
+    <string name="text_215" formatted="false">"Clipboard received from B • "</string>
+    <string name="text_216" formatted="false">" characters"</string>
+    <string name="text_217" formatted="false">"Reconnection scheduled; you can stop it from the session menu."</string>
+    <string name="text_218" formatted="false">"Scrcpy console"</string>
+    <string name="text_219" formatted="false">"Console copied"</string>
+    <string name="text_220" formatted="false">"The log is too large for the clipboard; use Export."</string>
+    <string name="text_221" formatted="false">"Copy: "</string>
+    <string name="text_222" formatted="false">"Clear: "</string>
+    <string name="text_223" formatted="false">"There is no completed recording or screenshot yet. Recording is finalized on disconnect."</string>
+    <string name="text_224" formatted="false">"Destination unavailable"</string>
+    <string name="text_225" formatted="false">"File exported"</string>
+    <string name="text_226" formatted="false">"Missing SPS/PPS for H264 recording"</string>
+    <string name="text_227" formatted="false">"MP4: no video frames received; the empty file was deleted."</string>
+    <string name="text_228" formatted="false">"MP4 saved: "</string>
+    <string name="text_229" formatted="false">"B does not expose an ADB interface. Enable USB debugging on B and reconnect the cable."</string>
+    <string name="text_230" formatted="false">"USB permission on A has not been granted"</string>
+    <string name="text_231" formatted="false">"Cannot open USB. Check the host/OTG role on A and reconnect the cable."</string>
+    <string name="text_232" formatted="false">"The USB ADB interface is busy"</string>
+    <string name="text_233" formatted="false">"USB IN endpoint initialization failed"</string>
+    <string name="text_234" formatted="false">"The local ADB client did not open the USB transport"</string>
+    <string name="text_235" formatted="false">"USB closed"</string>
+    <string name="text_236" formatted="false">"Incomplete USB write: "</string>
+    <string name="text_237" formatted="false">". Check the OTG connection and power."</string>
+    <string name="text_238" formatted="false">"Could not queue the USB read"</string>
+    <string name="text_239" formatted="false">"USB request cancelled / cable disconnected"</string>
+    <string name="text_240" formatted="false">"USB transport stopped: "</string>
+    <string name="text_241" formatted="false">"Maximum resolution • px"</string>
+    <string name="text_242" formatted="false">"0 = original size; 1280 is a good starting point."</string>
+    <string name="text_243" formatted="false">"Video bitrate • bits/s"</string>
+    <string name="text_244" formatted="false">"8 Mbps = 8000000. Try 2000000 for a weak Wi-Fi connection."</string>
+    <string name="text_245" formatted="false">"Maximum FPS"</string>
+    <string name="text_246" formatted="false">"30 / 60 / 90 / 120; the actual frame rate depends on B and the connection."</string>
+    <string name="text_247" formatted="false">"Video codec"</string>
+    <string name="text_248" formatted="false">"Video source"</string>
+    <string name="text_249" formatted="false">"Display ID"</string>
+    <string name="text_250" formatted="false">"0 = main display. Use Displays in the session menu."</string>
+    <string name="text_251" formatted="false">"Crop"</string>
+    <string name="text_252" formatted="false">"width:height:x:y, for example 1080:1920:0:0. Empty = full image."</string>
+    <string name="text_253" formatted="false">"Capture orientation"</string>
+    <string name="text_254" formatted="false">"Empty = auto; 0, 90, 180, 270; @0 locks orientation."</string>
+    <string name="text_255" formatted="false">"Video angle"</string>
+    <string name="text_256" formatted="false">"Rotation in degrees. Applied by the server; does not change phone A."</string>
+    <string name="text_257" formatted="false">"Video encoder"</string>
+    <string name="text_258" formatted="false">"Empty = automatic; find names using Encoders in the session menu."</string>
+    <string name="text_259" formatted="false">"Video encoder options"</string>
+    <string name="text_260" formatted="false">"Example: i-frame-interval=1. MediaFormat values: key[:type]=value."</string>
+    <string name="text_261" formatted="false">"Audio from B"</string>
+    <string name="text_262" formatted="false">"Audio codec"</string>
+    <string name="text_263" formatted="false">"Audio bitrate • bits/s"</string>
+    <string name="text_264" formatted="false">"For AAC/Opus. RAW is uncompressed."</string>
+    <string name="text_265" formatted="false">"Audio source"</string>
+    <string name="text_266" formatted="false">"Keep audio playing on B"</string>
+    <string name="text_267" formatted="false">"Audio encoder"</string>
+    <string name="text_268" formatted="false">"Empty = automatic."</string>
+    <string name="text_269" formatted="false">"Audio encoder options"</string>
+    <string name="text_270" formatted="false">"key[:type]=value. Advanced option; depends on the encoder."</string>
+    <string name="text_271" formatted="false">"Camera ID"</string>
+    <string name="text_272" formatted="false">"Empty = automatic. Available for the camera source on Android 12+."</string>
+    <string name="text_273" formatted="false">"Preferred camera"</string>
+    <string name="text_274" formatted="false">"Camera size"</string>
+    <string name="text_275" formatted="false">"Example: 1920x1080. Empty = automatic."</string>
+    <string name="text_276" formatted="false">"Camera FPS"</string>
+    <string name="text_277" formatted="false">"30 or 60, if supported."</string>
+    <string name="text_278" formatted="false">"High speed camera"</string>
+    <string name="text_279" formatted="false">"Virtual display"</string>
+    <string name="text_280" formatted="false">"Empty = disabled; example: 1280x720/240. Depends on B’s Android version."</string>
+    <string name="text_281" formatted="false">"Allow control"</string>
+    <string name="text_282" formatted="false">"Show touches on B"</string>
+    <string name="text_283" formatted="false">"Keep B awake while charging"</string>
+    <string name="text_284" formatted="false">"Turn off B’s screen on exit"</string>
+    <string name="text_285" formatted="false">"Receive clipboard from B"</string>
+    <string name="text_286" formatted="false">"Reduce resolution on error"</string>
+    <string name="text_287" formatted="false">"Turn off B’s screen on connect"</string>
+    <string name="text_288" formatted="false">"Record MP4 on A"</string>
+    <string name="text_289" formatted="false">"Reconnect automatically"</string>
+    <string name="text_290" formatted="false">"Cursor speed"</string>
+    <string name="text_291" formatted="false">"0.2–5.0; mouse mode is a relative trackpad with a local cursor."</string>
+    <string name="text_292" formatted="false">"Extra server options"</string>
+    <string name="text_293" formatted="false">"One key=value per line. Help contains the full catalog; these are not CLI --... arguments."</string>
+    <string name="text_294" formatted="false">"Invalid option: "</string>
+    <string name="text_295" formatted="false">". Use key=value."</string>
+    <string name="text_296" formatted="false">"Unknown server option: "</string>
+    <string name="text_297" formatted="false">"Option "</string>
+    <string name="text_298" formatted="false">" is managed by the client."</string>
+    <string name="text_299" formatted="false">" cannot be negative"</string>
+    <string name="text_300" formatted="false">"Invalid FPS"</string>
+    <string name="text_301" formatted="false">"Mouse speed must be between 0.2 and 5"</string>
+    <string name="text_302" formatted="false">"Invalid video codec"</string>
+    <string name="text_303" formatted="false">"Invalid audio codec"</string>
+    <string name="text_304" formatted="false">"MP4 recording requires h264 video and, if audio is enabled, aac audio."</string>
+    <string name="app_name" formatted="false">"Scrcpy"</string>
+    <string name="language" formatted="false">"Language"</string>
+    <string name="language_hint" formatted="false">"Choose the app language. Changes apply immediately and are saved."</string>
+    <string name="option_display" formatted="false">"Screen"</string>
+    <string name="option_camera" formatted="false">"Camera"</string>
+    <string name="option_front" formatted="false">"Front"</string>
+    <string name="option_back" formatted="false">"Rear"</string>
+    <string name="option_external" formatted="false">"External"</string>
+    <string name="option_output" formatted="false">"Device audio output"</string>
+    <string name="option_playback" formatted="false">"App playback"</string>
+    <string name="option_mic" formatted="false">"Microphone"</string>
+    <string name="option_mic_unprocessed" formatted="false">"Microphone • unprocessed"</string>
+    <string name="option_mic_camcorder" formatted="false">"Microphone • camcorder"</string>
+    <string name="option_mic_voice_recognition" formatted="false">"Microphone • voice recognition"</string>
+    <string name="option_mic_voice_communication" formatted="false">"Microphone • voice communication"</string>
+    <string name="option_voice_call" formatted="false">"Voice call"</string>
+    <string name="option_voice_call_uplink" formatted="false">"Voice call • uplink"</string>
+    <string name="option_voice_call_downlink" formatted="false">"Voice call • downlink"</string>
+    <string name="option_voice_performance" formatted="false">"Voice performance"</string>
+    <string name="help_intro" formatted="false">"Guides, controls and command reference. Choose a topic or search."</string>
+    <string name="help_search_all" formatted="false">"Search all topics…"</string>
+    <string name="help_search_topic" formatted="false">"Search this category…"</string>
+    <string name="help_all_topics" formatted="false">"‹ All topics"</string>
+    <string name="help_copy_command" formatted="false">"Copy command"</string>
+    <string name="help_command_copied" formatted="false">"Command copied"</string>
+</resources>

@@ -1,0 +1,1489 @@
+{
+  "version": 1,
+  "topics": [
+    {
+      "id": "connect",
+      "title": "Connection",
+      "summary": "USB, wireless pairing and troubleshooting",
+      "sections": [
+        {
+          "title": "Getting started",
+          "body": "Install the APK on phone A (the controller). Direct USB is the main connection mode; wireless is optional. B does not need another APK: the client copies and starts the official scrcpy 3.3.4 server through ADB.\nA requires Android 8+. B requires Android 5+ for video, Android 11+ for output audio, and Android 12+ for camera capture. Compatibility with future Android updates depends on the server version.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Direct USB",
+          "body": "1. On B, enable Developer options → USB debugging. Wireless debugging is not needed for this mode.\n2. Connect A and B with a DATA cable. A must be the USB host/OTG device (the phone controlling USB); B is the USB device. Some models require enabling OTG or changing “USB controlled by”. An OTG adapter on A can help establish the roles.\n3. Open Scrcpy on A and allow USB access. The app does not open itself when the cable is connected.\n4. Unlock B, accept “Allow USB debugging”, and select “Always allow” for A’s key if you want to keep the authorization.\n5. Automatic USB connection only starts a new session while Scrcpy is in the foreground. Open the app yourself after connecting the cable, or tap Connect USB manually. If several ADB devices are connected, choose B from the list.\nAfter authorization, no IP address, ports, wireless codes or PC are needed. Some Android versions ask for USB access on A again when the cable is reconnected; this is a system dialog.\nUnplugging the cable closes the session and releases USB resources. Reconnecting the cable triggers another connection attempt only while the app is in the foreground and automatic connection is enabled. A manually disconnected session stays stopped until you tap Connect USB or reconnect the cable.\nVideo, audio and control use the same scrcpy channels, including direct multitouch with separate finger IDs, trackpad mouse control, clipboard and recording. Direct USB here is not scrcpy’s --otg/HID mode, which controls the device without video mirroring.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "USB troubleshooting",
+          "body": "• B is missing: check that the cable supports data, A is the host/OTG device, and USB debugging is enabled on B. Reconnect the cable after enabling debugging.\n• A detects B but video does not start: check B for the “Allow USB debugging” prompt, then open the session console for ADB/server messages.\n• On Xiaomi, if video works but touch does not, check “USB debugging (Security settings)” on B.\n• Cannot switch roles: check USB settings on both phones, or connect an OTG adapter to A and use a data cable to B.\n• Stuttering: try the balanced 1280 / 60 FPS / 8 Mbps profile or a lower resolution. USB speed and power depend on the hardware and cable.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Wireless pairing",
+          "body": "1. On B, enable Developer options → Wireless debugging.\n2. Open “Pair device with pairing code”. On A, enter B’s IP address, PAIRING port and 6-digit code, then tap Pair A with B.\n3. Close the pairing-code window on B. Use the CONNECTION IP:port from the main Wireless debugging page on A, then tap Connect over network.\nThe pairing port and connection port are different. Android may change the connection port after disabling debugging or changing networks. Update it when needed.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Classic ADB TCP",
+          "body": "On a PC with B connected and authorized over USB:\n\nThen enter B’s IP and port 5555 on A. Accept A’s key on B when prompted. On some Xiaomi devices, “USB debugging (Security settings)” is also required for input control.",
+          "kind": "text",
+          "command": "adb devices\nadb tcpip 5555"
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "title": "Controls and zoom",
+      "summary": "Touch, mouse buttons and local zoom",
+      "sections": [
+        {
+          "title": "Interaction",
+          "body": "Your mode is remembered for later sessions. Switching mode releases any active mouse buttons and touch points.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Direct touch",
+          "body": "touch the desired point on the image. Each finger’s ID, coordinates and pressure are sent separately. Pinch and other multitouch gestures in this mode are sent to B rather than converted into mouse clicks. The number of simultaneous fingers depends on A and B.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Gesture touchpad",
+          "body": "move a finger to move the cursor; tap briefly to click; hold a finger still, then move it to drag. At 1×, move two fingers together to scroll. This is relative input, similar to a VNC viewer.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Touchpad with buttons",
+          "body": "move a finger over the image to move the cursor. Clicks are sent only through Left and Right, overlaid across the full width near the bottom of the image. The buttons have transparent interiors and visible outlines, including while pressed. Hold Left with one finger and move another finger over the image to drag. Lifting the finger from the trackpad area does not release a button you are still holding. At 1×, moving two fingers together over the image scrolls B.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Local zoom in both Touchpad modes",
+          "body": "pinch on the image to zoom between 1× and 6×. Video is enlarged and cropped only on A; no pinch gesture, zoom command or resolution change is sent to B. When zoomed, move two fingers together to pan the crop. At 1×, parallel two-finger movement scrolls B. Lift all fingers before starting a new gesture after a pinch. Mouse buttons are independent of gestures on the image. The ••• menu has Zoom −, Reset 1× and Zoom +. Direct touch resets local zoom to 1× and preserves remote multitouch.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "",
+          "body": "The small ••• button opens the session menu; drag it to reposition it. The menu provides control modes, Actions and tools, Console and commands, and Disconnect session. The main menu and Actions page stay open after an action. Close explicitly with ×, Back to control or Back on A; tapping outside does not close the menu. Actions include navigation, volume/mute, screen power, Android panels, clipboard, screenshots and diagnostics. You can press Volume + / − repeatedly without reopening the menu. Text-entry dialogs and Console open above the menu and return to it when closed.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "",
+          "body": "Back on A opens the session menu. Use the remote Back action to press Back on B.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "",
+          "body": "Physical keyboard keycodes are forwarded while viewing the session. For Unicode text, use Send text / Clipboard.",
+          "kind": "text",
+          "command": ""
+        }
+      ]
+    },
+    {
+      "id": "settings",
+      "title": "Video and audio",
+      "summary": "Profiles, codecs and setting values",
+      "sections": [
+        {
+          "title": "App language",
+          "body": "At the very bottom of Settings, open Language and choose English or Română. The interface and this guide update immediately; your choice is saved. Video settings, connection details and the ADB key are kept. The app’s name is Scrcpy in both languages.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "USB quality profile",
+          "body": "1920 px, 60 FPS, 24000000 bits/s (24 Mbps), h264. Like other video settings, it applies to the next connection.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Each editable setting has a ▾ button with concrete values and Enter manually…; you can still type a value. Resolutions",
+          "body": "original / 4320 / 3840 / 2560 / 2400 / 2160 / 1920 / 1600 / 1440 / 1280 / 1024 / 960 / 800 / 720 / 640 / 480 px. FPS: unlimited / 24 / 25 / 30 / 45 / 60 / 90 / 120 / 144 / 165 / 180 / 240. Video bitrate: 0.5 to 150 Mbps, with intermediate values. There are also choices for audio bitrate, camera FPS and size, orientation, angle, virtual display and cursor speed. These are requested settings; actual supported modes depend on the devices.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Balanced profile",
+          "body": "resolution 1280, 60 FPS, bitrate 8000000, h264.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Low bandwidth",
+          "body": "resolution 800, 30 FPS, bitrate 2000000; audio off if needed.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Original resolution",
+          "body": "max_size=0. This increases bandwidth and decoding requirements.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "HEVC",
+          "body": "video_codec=h265. AV1: video_codec=av1. Both devices need compatible codecs. If video stays black, switch back to h264.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Camera",
+          "body": "video_source=camera, camera_facing=back, camera_size=1920x1080. Screen input control is disabled automatically for camera sessions.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Crop",
+          "body": "crop=1080:1920:0:0.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Rotation",
+          "body": "capture_orientation=90. Lock orientation: capture_orientation=@0.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Microphone audio",
+          "body": "audio=true and audio_source=mic. Output/playback capture depends on Android and the captured app’s policy.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "max_size",
+          "body": "Maximum resolution • px.\n\nDefault: 1280. 0 = original size; 1280 is a good starting point.\n\nExample value: 1280.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "video_bit_rate",
+          "body": "Video bitrate • bits/s.\n\nDefault: 8000000. 8 Mbps = 8000000. Try 2000000 for a weak Wi-Fi connection.\n\nExample value: 8000000.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "max_fps",
+          "body": "Maximum FPS.\n\nDefault: 60. 30 / 60 / 90 / 120; the actual frame rate depends on B and the connection.\n\nExample value: 60.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "video_codec",
+          "body": "Video codec.\n\nDefault: h264. h264|h265|av1\n\nExample value: h264.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "video_source",
+          "body": "Video source.\n\nDefault: display. display|camera\n\nExample value: display.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "display_id",
+          "body": "Display ID.\n\nDefault: 0. 0 = main display. Use Displays in the session menu.\n\nExample value: 0.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "crop",
+          "body": "Crop.\n\nDefault: empty / automatic. width:height:x:y, for example 1080:1920:0:0. Empty = full image.\n\nExample value: 1080:1920:0:0.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "capture_orientation",
+          "body": "Capture orientation.\n\nDefault: empty / automatic. Empty = auto; 0, 90, 180, 270; @0 locks orientation.\n\nExample value: 90.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "angle",
+          "body": "Video angle.\n\nDefault: 0. Rotation in degrees. Applied by the server; does not change phone A.\n\nExample value: 0.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "video_encoder",
+          "body": "Video encoder.\n\nDefault: empty / automatic. Empty = automatic; find names using Encoders in the session menu.\n\nExample value: (a name from Encoders).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "video_codec_options",
+          "body": "Video encoder options.\n\nDefault: empty / automatic. Example: i-frame-interval=1. MediaFormat values: key[:type]=value.\n\nExample value: i-frame-interval=1.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "audio",
+          "body": "Audio from B.\n\nDefault: false. true/false switch.\n\nExample value: false.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "audio_codec",
+          "body": "Audio codec.\n\nDefault: aac. aac|opus|raw|flac\n\nExample value: aac.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "audio_bit_rate",
+          "body": "Audio bitrate • bits/s.\n\nDefault: 128000. For AAC/Opus. RAW is uncompressed.\n\nExample value: 128000.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "audio_source",
+          "body": "Audio source.\n\nDefault: output. output|playback|mic|mic-unprocessed|mic-camcorder|mic-voice-recognition|mic-voice-communication|voice-call|voice-call-uplink|voice-call-downlink|voice-performance\n\nExample value: output.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "audio_dup",
+          "body": "Keep audio playing on B.\n\nDefault: false. true/false switch.\n\nExample value: false.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "audio_encoder",
+          "body": "Audio encoder.\n\nDefault: empty / automatic. Empty = automatic.\n\nExample value: (a name from Encoders).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "audio_codec_options",
+          "body": "Audio encoder options.\n\nDefault: empty / automatic. key[:type]=value. Advanced option; depends on the encoder.\n\nExample value: (a MediaFormat key supported by the encoder).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "camera_id",
+          "body": "Camera ID.\n\nDefault: empty / automatic. Empty = automatic. Available for the camera source on Android 12+.\n\nExample value: 0.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "camera_facing",
+          "body": "Preferred camera.\n\nDefault: empty / automatic. |front|back|external\n\nExample value: back.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "camera_size",
+          "body": "Camera size.\n\nDefault: empty / automatic. Example: 1920x1080. Empty = automatic.\n\nExample value: 1920x1080.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "camera_fps",
+          "body": "Camera FPS.\n\nDefault: 30. 30 or 60, if supported.\n\nExample value: 30.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "camera_high_speed",
+          "body": "High speed camera.\n\nDefault: false. true/false switch.\n\nExample value: false.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "new_display",
+          "body": "Virtual display.\n\nDefault: empty / automatic. Empty = disabled; example: 1280x720/240. Depends on B’s Android version.\n\nExample value: 1280x720/240.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "control",
+          "body": "Allow control.\n\nDefault: true. true/false switch.\n\nExample value: true.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "show_touches",
+          "body": "Show touches on B.\n\nDefault: false. true/false switch.\n\nExample value: false.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "stay_awake",
+          "body": "Keep B awake while charging.\n\nDefault: false. true/false switch.\n\nExample value: false.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "power_off_on_close",
+          "body": "Turn off B’s screen on exit.\n\nDefault: false. true/false switch.\n\nExample value: false.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "clipboard_autosync",
+          "body": "Receive clipboard from B.\n\nDefault: true. true/false switch.\n\nExample value: true.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "downsize_on_error",
+          "body": "Reduce resolution on error.\n\nDefault: true. true/false switch.\n\nExample value: true.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "screenOff",
+          "body": "Turn off B’s screen on connect.\n\nDefault: false. true/false switch.\n\nExample value: false.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "reconnect",
+          "body": "Reconnect automatically.\n\nDefault: true. true/false switch.\n\nExample value: true.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "mouseSpeed",
+          "body": "Cursor speed.\n\nDefault: 1.2. 0.2–5.0; mouse mode is a relative trackpad with a local cursor.\n\nExample value: 1.2.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "extra",
+          "body": "Extra server options.\n\nDefault: empty / automatic. One key=value per line. Help contains the full catalog; these are not CLI --... arguments.\n\nExample value: log_level=debug.",
+          "kind": "reference",
+          "command": ""
+        }
+      ]
+    },
+    {
+      "id": "files",
+      "title": "Recording and files",
+      "summary": "MP4 recordings, screenshots and export",
+      "sections": [
+        {
+          "title": "Recording",
+          "body": "enable record, video_codec=h264, and audio_codec=aac if audio is enabled. MP4 is produced from the compressed stream and finalized on disconnect. A change to the video configuration, such as rotation, ends the current recording. Reconnecting starts a new file. Export last recording / screenshot copies it to a folder of your choice.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Screenshots",
+          "body": "PNG screenshots save the image shown on A, at the size of the displayed surface.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Export",
+          "body": "Open ••• → Actions and tools → Export last screenshot / recording. Choose a destination folder. The latest finished file is available after the session ends.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "record",
+          "body": "Record MP4 on A.\n\nDefault: false. true/false switch.\n\nExample value: false.",
+          "kind": "reference",
+          "command": ""
+        }
+      ]
+    },
+    {
+      "id": "console",
+      "title": "Console and shell",
+      "summary": "Log levels and commands for phone B",
+      "sections": [
+        {
+          "title": "Reading the console",
+          "body": "INFO is neutral, OK is green, WARN is amber, ERROR is red, and CMD is blue. Each entry groups its metadata above the message. USB, ADB, VIDEO, AUDIO and other tags identify the source. Copy and Export keep plain text; colors are only used on screen.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Console",
+          "body": "Shows server commands, B’s stdout/stderr, shell-command output and client errors. Copy, Clear and Export act on the log. Clear empties both the log file and the visible console. Copy attempts to copy the complete log; use Export for large logs. The screen keeps the last 2 MB; the file contains everything since the last Clear.\nDuring a session: ••• → Console and commands. Commands run in B’s ADB shell. This is not an interactive terminal emulator: each command starts a separate shell. Use Stop shell commands for long-running commands. Output from B and third-party libraries is shown verbatim, in its original language.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "wm size",
+          "body": "show B’s display dimensions.",
+          "kind": "command",
+          "command": "wm size"
+        },
+        {
+          "title": "wm density",
+          "body": "show B’s display density.",
+          "kind": "command",
+          "command": "wm density"
+        },
+        {
+          "title": "getprop ro.product.model",
+          "body": "show B’s model.",
+          "kind": "command",
+          "command": "getprop ro.product.model"
+        },
+        {
+          "title": "dumpsys battery",
+          "body": "show B’s battery status.",
+          "kind": "command",
+          "command": "dumpsys battery"
+        },
+        {
+          "title": "input keyevent 3",
+          "body": "Home on B.",
+          "kind": "command",
+          "command": "input keyevent 3"
+        },
+        {
+          "title": "input keyevent 4",
+          "body": "Back on B.",
+          "kind": "command",
+          "command": "input keyevent 4"
+        },
+        {
+          "title": "settings get system screen_brightness",
+          "body": "read B’s brightness.",
+          "kind": "command",
+          "command": "settings get system screen_brightness"
+        },
+        {
+          "title": "logcat -d -t 100",
+          "body": "recent logcat messages available to the shell.",
+          "kind": "command",
+          "command": "logcat -d -t 100"
+        },
+        {
+          "title": "pm list packages",
+          "body": "list installed packages.",
+          "kind": "command",
+          "command": "pm list packages"
+        },
+        {
+          "title": "am start -a android.settings.SETTINGS",
+          "body": "open Settings on B.",
+          "kind": "command",
+          "command": "am start -a android.settings.SETTINGS"
+        }
+      ]
+    },
+    {
+      "id": "server",
+      "title": "Server reference",
+      "summary": "All supported server keys and examples",
+      "sections": [
+        {
+          "title": "Extra options",
+          "body": "Extra server options accepts one key=value per line. Values are shell-escaped; do not enter CLI --options in this field. Examples:\ncamera_ar=16:9\nscreen_off_timeout=300000\nlog_level=debug\nvd_system_decorations=true\nTransport and metadata options are managed by the client and cannot be overridden. list_* diagnostics are available in the session menu; their results appear in Console.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "scid",
+          "body": "Unique socket ID; generated automatically by the client.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "log_level",
+          "body": "debug, info, warn or error. Example: log_level=debug.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "video",
+          "body": "Video channel; the client keeps it true.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "audio",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "video_codec",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "audio_codec",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "video_source",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "audio_source",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "audio_dup",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "max_size",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "video_bit_rate",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "audio_bit_rate",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "max_fps",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "angle",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "tunnel_forward",
+          "body": "Server transport mode. Managed by the client: true.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "crop",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "control",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "display_id",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "show_touches",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "stay_awake",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "screen_off_timeout",
+          "body": "Screen timeout in milliseconds. Example: screen_off_timeout=300000.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "video_codec_options",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "audio_codec_options",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "video_encoder",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "audio_encoder",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "power_off_on_close",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "clipboard_autosync",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "downsize_on_error",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "cleanup",
+          "body": "Restore settings changed by the server on exit. Managed by the client: true.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "power_on",
+          "body": "Turn the screen on when connecting. Example: power_on=false.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "list_encoders",
+          "body": "List encoders. Session menu → Actions and tools → Encoders.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "list_displays",
+          "body": "List displays. Session menu → Actions and tools → Displays.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "list_cameras",
+          "body": "List cameras. Session menu → Actions and tools → Cameras.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "list_camera_sizes",
+          "body": "List camera modes. Session menu → Actions and tools → Camera sizes.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "list_apps",
+          "body": "List apps. Session menu → Actions and tools → Apps.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "camera_id",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "camera_size",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "camera_facing",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "camera_ar",
+          "body": "Camera aspect ratio. Example: camera_ar=16:9.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "camera_fps",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "camera_high_speed",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "new_display",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "vd_destroy_content",
+          "body": "Destroy virtual display content on exit. Example: vd_destroy_content=true.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "vd_system_decorations",
+          "body": "System decorations on virtual displays. Example: vd_system_decorations=true.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "capture_orientation",
+          "body": "See the setting and example in the client catalog above.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "display_ime_policy",
+          "body": "Keyboard policy for virtual displays. Android integer values: 0 local, 1 fallback, 2 hide. Example: display_ime_policy=0.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "send_device_meta",
+          "body": "Device name metadata. true, managed by the client.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "send_frame_meta",
+          "body": "Per-packet timestamp and flags header. true, managed by the client.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "send_dummy_byte",
+          "body": "Handshake byte. true, managed by the client.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "send_codec_meta",
+          "body": "Codec ID and initial dimensions. true, managed by the client.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "raw_stream",
+          "body": "Disable protocol headers. Incompatible with the client parser; cannot be overridden.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "local",
+          "body": "Advanced server option; see the official documentation.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "fallback",
+          "body": "Advanced server option; see the official documentation.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "hide",
+          "body": "Advanced server option; see the official documentation.",
+          "kind": "reference",
+          "command": ""
+        }
+      ]
+    },
+    {
+      "id": "desktop",
+      "title": "Desktop reference",
+      "summary": "PC commands and the full scrcpy manual",
+      "sections": [
+        {
+          "title": "PC only",
+          "body": "The options in this section are for scrcpy on a PC. This Android client supports only the features described above. On a PC, scrcpy.exe --help gives the exact list for the installed version.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "--always-on-top --borderless",
+          "body": "keep the window above others, without borders.",
+          "kind": "command",
+          "command": "--always-on-top --borderless"
+        },
+        {
+          "title": "--max-size=1280 --max-fps=60 --video-bit-rate=8M",
+          "body": "balanced video profile.",
+          "kind": "command",
+          "command": "--max-size=1280 --max-fps=60 --video-bit-rate=8M"
+        },
+        {
+          "title": "--video-codec=h265",
+          "body": "HEVC compression, if supported by the phone and PC.",
+          "kind": "command",
+          "command": "--video-codec=h265"
+        },
+        {
+          "title": "--no-audio",
+          "body": "no audio. --audio-source=mic : use the phone microphone.",
+          "kind": "command",
+          "command": "--no-audio"
+        },
+        {
+          "title": "--turn-screen-off --stay-awake",
+          "body": "turn the physical screen off and keep the session awake.",
+          "kind": "command",
+          "command": "--turn-screen-off --stay-awake"
+        },
+        {
+          "title": "--record=telefon.mp4",
+          "body": "record into the scrcpy folder.",
+          "kind": "command",
+          "command": "--record=telefon.mp4"
+        },
+        {
+          "title": "--serial=SERIAL",
+          "body": "select a device (adb devices lists serials).",
+          "kind": "command",
+          "command": "--serial=SERIAL"
+        },
+        {
+          "title": "--tcpip=192.168.1.50:5555",
+          "body": "connect over the network with ADB already enabled.",
+          "kind": "command",
+          "command": "--tcpip=192.168.1.50:5555"
+        },
+        {
+          "title": "--crop=1080:1920:0:0",
+          "body": "crop width:height:x:y.",
+          "kind": "command",
+          "command": "--crop=1080:1920:0:0"
+        },
+        {
+          "title": "--no-control",
+          "body": "view only.",
+          "kind": "command",
+          "command": "--no-control"
+        },
+        {
+          "title": "NAME",
+          "body": "scrcpy - Display and control your Android device",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "SYNOPSIS",
+          "body": "scrcpy\n[ options ]",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "DESCRIPTION",
+          "body": "scrcpy\nprovides display and control of Android devices connected on USB (or over TCP/IP). It does not require any root access.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "--always-on-top",
+          "body": "Make scrcpy window always on top (above other windows).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--angle  degrees",
+          "body": "Rotate the video content by a custom angle, in degrees (clockwise).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--audio-bit-rate  value",
+          "body": "Encode the audio at the given bit rate, expressed in bits/s. Unit suffixes are supported: 'K' (x1000) and 'M' (x1000000).\n\nDefault is 128K (128000).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--audio-buffer  ms",
+          "body": "Configure the audio buffering delay (in milliseconds).\n\nLower values decrease the latency, but increase the likelihood of buffer underrun (causing audio glitches).\n\nDefault is 50.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--audio-codec  name",
+          "body": "Select an audio codec (opus, aac, flac or raw).\n\nDefault is opus.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--audio-codec-options  key[:type]=value[,...]",
+          "body": "Set a list of comma-separated key:type=value options for the device audio encoder.\n\nThe possible values for 'type' are 'int' (default), 'long', 'float' and 'string'.\n\nThe list of possible codec options is available in the Android documentation:\n\n<https://d.android.com/reference/android/media/MediaFormat>",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--audio-dup",
+          "body": "Duplicate audio (capture and keep playing on the device).\n\nThis feature is only available with --audio-source=playback.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--audio-encoder  name",
+          "body": "Use a specific MediaCodec audio encoder (depending on the codec provided by --audio-codec).\n\nThe available encoders can be listed by --list-encoders.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--audio-source  source",
+          "body": "Select the audio source. Possible values are:\n\n - output: forwards the whole audio output, and disables playback on the device.\n - playback: captures the audio playback (Android apps can opt-out, so the whole output is not necessarily captured).\n - mic: captures the microphone.\n - mic-unprocessed: captures the microphone unprocessed (raw) sound.\n - mic-camcorder: captures the microphone tuned for video recording, with the same orientation as the camera if available.\n - mic-voice-recognition: captures the microphone tuned for voice recognition.\n - mic-voice-communication: captures the microphone tuned for voice communications (it will for instance take advantage of echo cancellation or automatic gain control if available).\n - voice-call: captures voice call.\n - voice-call-uplink: captures voice call uplink only.\n - voice-call-downlink: captures voice call downlink only.\n - voice-performance: captures audio meant to be processed for live performance (karaoke), includes both the microphone and the device playback.\n\nDefault is output.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--audio-output-buffer  ms",
+          "body": "Configure the size of the SDL audio output buffer (in milliseconds).\n\nIf you get robotic audio playback, you should test with a higher value (10). Do not change this setting otherwise.\n\nDefault is 5.\n\n-b, --video-bit-rate  value\nEncode the video at the given bit rate, expressed in bits/s. Unit suffixes are supported: 'K' (x1000) and 'M' (x1000000).\n\nDefault is 8M (8000000).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--camera-ar  ar",
+          "body": "Select the camera size by its aspect ratio (+/- 10%).\n\nPossible values are sensor (use the camera sensor aspect ratio), num:den (e.g. 4:3) and value (e.g. 1.6).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--camera-facing  facing",
+          "body": "Select the device camera by its facing direction.\n\nPossible values are front, back and external.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--camera-fps  fps",
+          "body": "Specify the camera capture frame rate.\n\nIf not specified, Android's default frame rate (30 fps) is used.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--camera-high-speed",
+          "body": "Enable high-speed camera capture mode.\n\nThis mode is restricted to specific resolutions and frame rates, listed by --list-camera-sizes.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--camera-id  id",
+          "body": "Specify the device camera id to mirror.\n\nThe available camera ids can be listed by --list-cameras.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--camera-size  widthxheight",
+          "body": "Specify an explicit camera capture size.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--capture-orientation  value",
+          "body": "Possible values are 0, 90, 180, 270, flip0, flip90, flip180 and flip270, possibly prefixed by '@'.\n\nThe number represents the clockwise rotation in degrees; the flip keyword applies a horizontal flip before the rotation.\n\nIf a leading '@' is passed (@90) for display capture, then the rotation is locked, and is relative to the natural device orientation.\n\nIf '@' is passed alone, then the rotation is locked to the initial device orientation.\n\nDefault is 0.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--crop  width:height:x:y",
+          "body": "Crop the device screen on the server.\n\nThe values are expressed in the device natural orientation (typically, portrait for a phone, landscape for a tablet).\n\n-d, --select-usb\nUse USB device (if there is exactly one, like adb -d).\n\nAlso see -e (--select-tcpip).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--disable-screensaver",
+          "body": "Disable screensaver while scrcpy is running.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--display-id  id",
+          "body": "Specify the device display id to mirror.\n\nThe available display ids can be listed by --list-displays.\n\nDefault is 0.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--display-ime-policy  value",
+          "body": "Set the policy for selecting where the IME should be displayed.\n\nPossible values are local, fallback and hide:\n\n - local means that the IME should appear on the local display.\n - fallback means that the IME should appear on a fallback display (the default display).\n - hide means that the IME should be hidden.\n\nBy default, the IME policy is left unchanged.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--display-orientation  value",
+          "body": "Set the initial display orientation.\n\nPossible values are 0, 90, 180, 270, flip0, flip90, flip180 and flip270. The number represents the clockwise rotation in degrees; the flip keyword applies a horizontal flip before the rotation.\n\nDefault is 0.\n\n-e, --select-tcpip\nUse TCP/IP device (if there is exactly one, like adb -e).\n\nAlso see -d (--select-usb).\n\n-f, --fullscreen\nStart in fullscreen.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--force-adb-forward",
+          "body": "Do not attempt to use adb reverse to connect to the device.\n\n-G\nSame as --gamepad=uhid, or --keyboard=aoa if --otg is set.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--gamepad  mode",
+          "body": "Select how to send gamepad inputs to the device.\n\nPossible values are disabled, uhid and aoa:\n\n - disabled does not send gamepad inputs to the device.\n - uhid simulates physical HID gamepads using the Linux HID kernel module on the device.\n - aoa simulates physical HID gamepads using the AOAv2 protocol. It may only work over USB.\n\nAlso see --keyboard\\f and R--mouse.\n-h, --help\nPrint this help.\n\n-K\nSame as --keyboard=uhid, or --keyboard=aoa if --otg is set.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--keyboard  mode",
+          "body": "Select how to send keyboard inputs to the device.\n\nPossible values are disabled, sdk, uhid and aoa:\n\n - disabled does not send keyboard inputs to the device.\n - sdk uses the Android system API to deliver keyboard events to applications.\n - uhid simulates a physical HID keyboard using the Linux HID kernel module on the device.\n - aoa simulates a physical HID keyboard using the AOAv2 protocol. It may only work over USB.\n\nFor uhid and aoa, the keyboard layout must be configured (once and for all) on the device, via Settings -> System -> Languages and input -> Physical keyboard. This settings page can be started directly using the shortcut MOD+k (except in OTG mode), or by executing:\n\n    adb shell am start -a android.settings.HARD_KEYBOARD_SETTINGS\n\nThis option is only available when the HID keyboard is enabled (or a physical keyboard is connected).\n\nAlso see --mouse and --gamepad.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--kill-adb-on-close",
+          "body": "Kill adb when scrcpy terminates.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--legacy-paste",
+          "body": "Inject computer clipboard text as a sequence of key events on Ctrl+v (like MOD+Shift+v).\n\nThis is a workaround for some devices not behaving as expected when setting the device clipboard programmatically.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--list-apps",
+          "body": "List Android apps installed on the device.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--list-camera-sizes",
+          "body": "List the valid camera capture sizes.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--list-cameras",
+          "body": "List cameras available on the device.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--list-encoders",
+          "body": "List video and audio encoders available on the device.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--list-displays",
+          "body": "List displays available on the device.\n\n-m, --max-size  value\nLimit both the width and height of the video to value. The other dimension is computed so that the device aspect-ratio is preserved.\n\nDefault is 0 (unlimited).\n\n-M\nSame as --mouse=uhid, or --mouse=aoa if --otg is set.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--max-fps  value",
+          "body": "Limit the framerate of screen capture (officially supported since Android 10, but may work on earlier versions).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--mouse  mode",
+          "body": "Select how to send mouse inputs to the device.\n\nPossible values are disabled, sdk, uhid and aoa:\n\n - disabled does not send mouse inputs to the device.\n - sdk uses the Android system API to deliver mouse events to applications.\n - uhid simulates a physical HID mouse using the Linux HID kernel module on the device.\n - aoa simulates a physical mouse using the AOAv2 protocol. It may only work over USB.\n\nIn uhid and aoa modes, the computer mouse is captured to control the device directly (relative mouse mode).\n\nLAlt, LSuper or RSuper toggle the capture mode, to give control of the mouse back to the computer.\n\nAlso see --keyboard and --gamepad.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--mouse-bind  xxxx[:xxxx]",
+          "body": "Configure bindings of secondary clicks.\n\nThe argument must be one or two sequences (separated by ':') of exactly 4 characters, one for each secondary click (in order: right click, middle click, 4th click, 5th click).\n\nThe first sequence defines the primary bindings, used when a mouse button is pressed alone. The second sequence defines the secondary bindings, used when a mouse button is pressed while the Shift key is held.\n\nIf the second sequence of bindings is omitted, then it is the same as the first one.\n\nEach character must be one of the following:\n\n - '+': forward the click to the device\n - '-': ignore the click\n - 'b': trigger shortcut BACK (or turn screen on if off)\n - 'h': trigger shortcut HOME\n - 's': trigger shortcut APP_SWITCH\n - 'n': trigger shortcut expand notification panel\n\nDefault is 'bhsn:++++' for SDK mouse, and '++++:bhsn' for AOA and UHID.\n\n\n-n, --no-control\nDisable device control (mirror the device in read-only).\n\n-N, --no-playback\nDisable video and audio playback on the computer (equivalent to --no-video-playback --no-audio-playback).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--new-display[=[widthxheight][/dpi]]",
+          "body": "Create a new display with the specified resolution and density. If not provided, they default to the main display dimensions and DPI.\n\nExamples:\n\n    --new-display=1920x1080\n    --new-display=1920x1080/420\n    --new-display         # main display size and density\n    --new-display=/240    # main display size and 240 dpi",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--no-audio",
+          "body": "Disable audio forwarding.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--no-audio-playback",
+          "body": "Disable audio playback on the computer.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--no-cleanup",
+          "body": "By default, scrcpy removes the server binary from the device and restores the device state (show touches, stay awake and power mode) on exit.\n\nThis option disables this cleanup.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--no-clipboard-autosync",
+          "body": "By default, scrcpy automatically synchronizes the computer clipboard to the device clipboard before injecting Ctrl+v, and the device clipboard to the computer clipboard whenever it changes.\n\nThis option disables this automatic synchronization.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--no-downsize-on-error",
+          "body": "By default, on MediaCodec error, scrcpy automatically tries again with a lower definition.\n\nThis option disables this behavior.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--no-key-repeat",
+          "body": "Do not forward repeated key events when a key is held down.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--no-mipmaps",
+          "body": "If the renderer is OpenGL 3.0+ or OpenGL ES 2.0+, then mipmaps are automatically generated to improve downscaling quality. This option disables the generation of mipmaps.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--no-mouse-hover",
+          "body": "Do not forward mouse hover (mouse motion without any clicks) events.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--no-power-on",
+          "body": "Do not power on the device on start.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--no-vd-destroy-content",
+          "body": "Disable virtual display destroy content on removal flag.\n\nWith this option, when the virtual display is closed, the running apps are moved to the main display rather than being destroyed.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--no-vd-system-decorations",
+          "body": "Disable virtual display system decorations flag.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--no-video",
+          "body": "Disable video forwarding.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--no-video-playback",
+          "body": "Disable video playback on the computer.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--no-window",
+          "body": "Disable scrcpy window. Implies --no-video-playback.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--orientation  value",
+          "body": "Same as --display-orientation=value --record-orientation=value.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--otg",
+          "body": "Run in OTG mode: simulate physical keyboard and mouse, as if the computer keyboard and mouse were plugged directly to the device via an OTG cable.\n\nIn this mode, adb (USB debugging) is not necessary, and mirroring is disabled.\n\nLAlt, LSuper or RSuper toggle the mouse capture mode, to give control of the mouse back to the computer.\n\nIf any of --hid-keyboard or --hid-mouse is set, only enable keyboard or mouse respectively, otherwise enable both.\n\nIt may only work over USB.\n\nSee --keyboard, --mouse and --gamepad.\n\n-p, --port  port[:port]\nSet the TCP port (range) used by the client to listen.\n\nDefault is 27183:27199.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--pause-on-exit[=mode]",
+          "body": "Configure pause on exit. Possible values are true (always pause on exit), false (never pause on exit) and if-error (pause only if an error occurred).\n\nThis is useful to prevent the terminal window from automatically closing, so that error messages can be read.\n\nDefault is false.\n\nPassing the option without argument is equivalent to passing true.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--power-off-on-close",
+          "body": "Turn the device screen off when closing scrcpy.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--prefer-text",
+          "body": "Inject alpha characters and space as text events instead of key events.\n\nThis avoids issues when combining multiple keys to enter special characters,\nbut breaks the expected behavior of alpha keys in games (typically WASD).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--print-fps",
+          "body": "Start FPS counter, to print framerate logs to the console. It can be started or stopped at any time with MOD+i.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--push-target  path",
+          "body": "Set the target directory for pushing files to the device by drag & drop. It is passed as-is to adb push.\n\nDefault is /sdcard/Download/.\n\n-r, --record  file\nRecord screen to\nfile .\n\nThe format is determined by the",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--record-format",
+          "body": "option if set, or by the file extension.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--raw-key-events",
+          "body": "Inject key events for all input keys, and ignore text events.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--record-format  format",
+          "body": "Force recording format (mp4, mkv, m4a, mka, opus, aac, flac or wav).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--record-orientation  value",
+          "body": "Set the record orientation.\n\nPossible values are 0, 90, 180 and 270. The number represents the clockwise rotation in degrees.\n\nDefault is 0.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--render-driver  name",
+          "body": "Request SDL to use the given render driver (this is just a hint).\n\nSupported names are currently direct3d, opengl, opengles2, opengles, metal and software.\n\n<https://wiki.libsdl.org/SDL_HINT_RENDER_DRIVER>",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--require-audio",
+          "body": "By default, scrcpy mirrors only the video if audio capture fails on the device. This option makes scrcpy fail if audio is enabled but does not work.\n\n-s, --serial  number\nThe device serial number. Mandatory only if several devices are connected to adb.\n\n-S, --turn-screen-off\nTurn the device screen off immediately.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--screen-off-timeout  seconds",
+          "body": "Set the screen off timeout while scrcpy is running (restore the initial value on exit).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--shortcut-mod  key[+...]][,...]",
+          "body": "Specify the modifiers to use for scrcpy shortcuts. Possible keys are lctrl, rctrl, lalt, ralt, lsuper and rsuper.\n\nSeveral shortcut modifiers can be specified, separated by ','.\n\nFor example, to use either LCtrl or LSuper for scrcpy shortcuts, pass lctrl,lsuper.\n\nDefault is lalt,lsuper (left-Alt or left-Super).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--start-app  name",
+          "body": "Start an Android app, by its exact package name.\n\nAdd a '?' prefix to select an app whose name starts with the given name, case-insensitive (retrieving app names on the device may take some time):\n\n    scrcpy --start-app=?firefox\n\nAdd a '+' prefix to force-stop before starting the app:\n\n    scrcpy --new-display --start-app=+org.mozilla.firefox\n\nBoth prefixes can be used, in that order:\n\n    scrcpy --start-app=+?firefox\n\n-t, --show-touches\nEnable show touches on start, restore the initial value on exit.\n\nIt only shows physical touches (not clicks from scrcpy).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--tcpip[=[+]ip[:port]]",
+          "body": "Configure and connect the device over TCP/IP.\n\nIf a destination address is provided, then scrcpy connects to this address before starting. The device must listen on the given TCP port (default is 5555).\n\nIf no destination address is provided, then scrcpy attempts to find the IP address and adb port of the current device (typically connected over USB), enables TCP/IP mode if necessary, then connects to this address before starting.\n\nPrefix the address with a '+' to force a reconnection.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--time-limit  seconds",
+          "body": "Set the maximum mirroring time, in seconds.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--tunnel-host  ip",
+          "body": "Set the IP address of the adb tunnel to reach the scrcpy server. This option automatically enables --force-adb-forward.\n\nDefault is localhost.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--tunnel-port  port",
+          "body": "Set the TCP port of the adb tunnel to reach the scrcpy server. This option automatically enables --force-adb-forward.\n\nDefault is 0 (not forced): the local port used for establishing the tunnel will be used.\n\n-v, --version\nPrint the version of scrcpy.\n\n-V, --verbosity  value\nSet the log level (verbose, debug, info, warn or error).\n\nDefault is info for release builds, debug for debug builds.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--v4l2-sink  /dev/videoN",
+          "body": "Output to v4l2loopback device.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--v4l2-buffer  ms",
+          "body": "Add a buffering delay (in milliseconds) before pushing frames. This increases latency to compensate for jitter.\n\nThis option is similar to --video-buffer, but specific to V4L2 sink.\n\nDefault is 0 (no buffering).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--video-buffer  ms",
+          "body": "Add a buffering delay (in milliseconds) before displaying video frames.\n\nThis increases latency to compensate for jitter.\n\nDefault is 0 (no buffering).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--video-codec  name",
+          "body": "Select a video codec (h264, h265 or av1).\n\nDefault is h264.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--video-codec-options  key[:type]=value[,...]",
+          "body": "Set a list of comma-separated key:type=value options for the device video encoder.\n\nThe possible values for 'type' are 'int' (default), 'long', 'float' and 'string'.\n\nThe list of possible codec options is available in the Android documentation:\n\n<https://d.android.com/reference/android/media/MediaFormat>",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--video-encoder  name",
+          "body": "Use a specific MediaCodec video encoder (depending on the codec provided by --video-codec).\n\nThe available encoders can be listed by --list-encoders.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--video-source  source",
+          "body": "Select the video source (display or camera).\n\nCamera mirroring requires Android 12+.\n\nDefault is display.\n\n-w, --stay-awake\nKeep the device on while scrcpy is running, when the device is plugged in.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--window-borderless",
+          "body": "Disable window decorations (display borderless window).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--window-title  text",
+          "body": "Set a custom window title.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--window-x  value",
+          "body": "Set the initial window horizontal position.\n\nDefault is auto.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--window-y  value",
+          "body": "Set the initial window vertical position.\n\nDefault is auto.",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--window-width  value",
+          "body": "Set the initial window width.\n\nDefault is 0 (automatic).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "--window-height  value",
+          "body": "Set the initial window height.\n\nDefault is 0 (automatic).",
+          "kind": "reference",
+          "command": ""
+        },
+        {
+          "title": "EXIT STATUS",
+          "body": "scrcpy\nwill exit with code 0 on normal program termination. If an initial\nconnection cannot be established, the exit code 1 will be returned. If the\ndevice disconnects while a session is active, exit code 2 will be returned.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "SHORTCUTS",
+          "body": "In the following list, MOD is the shortcut modifier. By default, it's (left)\nAlt or (left) Super, but it can be configured by --shortcut-mod (see above).\n\nMOD+f\nSwitch fullscreen mode\n\nMOD+Left\nRotate display left\n\nMOD+Right\nRotate display right\n\nMOD+Shift+Left, MOD+Shift+Right\nFlip display horizontally\n\nMOD+Shift+Up, MOD+Shift+Down\nFlip display vertically\n\nMOD+z\nPause or re-pause display\n\nMOD+Shift+z\nUnpause display\n\nMOD+Shift+r\nReset video capture/encoding\n\nMOD+g\nResize window to 1:1 (pixel-perfect)\n\nMOD+w, Double-click on black borders\nResize window to remove black borders\n\nMOD+h, Home, Middle-click\nClick on HOME\n\nMOD+b, MOD+Backspace, Right-click (when screen is on)\nClick on BACK\n\nMOD+s\nClick on APP_SWITCH\n\nMOD+m\nClick on MENU\n\nMOD+Up\nClick on VOLUME_UP\n\nMOD+Down\nClick on VOLUME_DOWN\n\nMOD+p\nClick on POWER (turn screen on/off)\n\nRight-click (when screen is off)\nTurn screen on\n\nMOD+o\nTurn device screen off (keep mirroring)\n\nMOD+Shift+o\nTurn device screen on\n\nMOD+r\nRotate device screen\n\nMOD+n\nExpand notification panel\n\nMOD+Shift+n\nCollapse notification panel\n\nMod+c\nCopy to clipboard (inject COPY keycode, Android >= 7 only)\n\nMod+x\nCut to clipboard (inject CUT keycode, Android >= 7 only)\n\nMOD+v\nCopy computer clipboard to device, then paste (inject PASTE keycode, Android >= 7 only)\n\nMOD+Shift+v\nInject computer clipboard text as a sequence of key events\n\nMOD+k\nOpen keyboard settings on the device (for HID keyboard only)\n\nMOD+i\nEnable/disable FPS counter (print frames/second in logs)\n\nCtrl+click-and-move\nPinch-to-zoom and rotate from the center of the screen\n\nShift+click-and-move\nTilt vertically (slide with 2 fingers)\n\nCtrl+Shift+click-and-move\nTilt horizontally (slide with 2 fingers)\n\nDrag & drop APK file\nInstall APK from computer\n\nDrag & drop non-APK file\nPush file to device (see --push-target)\n\n\n\nEnvironment variables",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "ADB",
+          "body": "Path to adb.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "ANDROID_SERIAL",
+          "body": "Device serial to use if no selector (-s, -d, -e or --tcpip=addr) is specified.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "SCRCPY_ICON_PATH",
+          "body": "Path to the program icon.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "SCRCPY_SERVER_PATH",
+          "body": "Path to the server binary.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "AUTHORS",
+          "body": "scrcpy\nis written by Romain Vimont.\n\nThis manual page was written by\nmmyangfl@gmail.com\nYangfl\n\nfor the Debian Project (and may be used by others).",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "REPORTING BUGS",
+          "body": "Report bugs to <https://github.com/Genymobile/scrcpy/issues>.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "COPYRIGHT",
+          "body": "Copyright \\(co 2018 Genymobile <https://www.genymobile.com>\n\nCopyright \\(co 2018-2025 Romain Vimont <rom@rom1v.com>\n\nLicensed under the Apache License, Version 2.0.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "WWW",
+          "body": "<https://github.com/Genymobile/scrcpy>",
+          "kind": "text",
+          "command": ""
+        }
+      ]
+    },
+    {
+      "id": "about",
+      "title": "About and sources",
+      "summary": "Compatibility, sources and licenses",
+      "sections": [
+        {
+          "title": "Compatibility and limits",
+          "body": "This Android client implements the scrcpy 3.3.4 protocol; it is not a complete port of the current desktop client. It supports USB host ADB (main mode), TCP ADB and wireless/TLS pairing (optional), video, audio, multitouch, trackpad input, clipboard, H264/AAC recording, screenshots, Android controls and shell commands.\nIt does not implement USB OTG/HID without mirroring, UHID gamepads, V4L2 virtual cameras, Windows/Linux/macOS window options, or flex displays from later versions. Desktop-only options in the reference manual below describe the PC client; they are not enabled features on A. Automatic A → B clipboard monitoring is not implemented; send it explicitly from the menu. An already started session is kept when the app goes into the background. New connections and automatic retries only start in the foreground.\nVideo, audio, camera and advanced codec support depend on Android and hardware. Protected app surfaces may appear black, as in scrcpy. An Android update may require a newer server and corresponding protocol changes.",
+          "kind": "text",
+          "command": ""
+        },
+        {
+          "title": "Sources and licenses",
+          "body": "Server, protocol and documentation: https://github.com/Genymobile/scrcpy/tree/v3.3.4 — Copyright Romain Vimont, Genymobile, Apache License 2.0.\nUSB transport: https://developer.android.com/develop/connectivity/usb/host and https://android.googlesource.com/platform/packages/modules/adb/+/HEAD/docs/dev/zero_length_packet.md\nADB and pairing library: https://github.com/MuntashirAkon/libadb-android/tree/3.1.1 — Muntashir Al-Islam, Apache License 2.0 / GPL-3.0-or-later; this project uses the Apache option.\nTLS: https://github.com/google/conscrypt — licenses are included with the dependency.\nAPIs: https://developer.android.com/reference/android/media/MediaCodec and MediaMuxer.",
+          "kind": "text",
+          "command": ""
+        }
+      ]
+    }
+  ]
+}

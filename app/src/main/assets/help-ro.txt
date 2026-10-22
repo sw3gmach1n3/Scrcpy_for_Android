@@ -1,0 +1,1033 @@
+SCRCPY • GHID ANDROID A → B
+
+LIMBA APLICAȚIEI
+La finalul paginii Setări, deschide Limbă / Language și alege English sau Română. Interfața și ghidul se actualizează imediat; alegerea se păstrează la următoarele porniri, fără resetarea setărilor video, conexiunii sau cheii ADB. Numele aplicației este Scrcpy în ambele limbi.
+
+INSTALARE ȘI CONECTARE
+Instalează APK-ul pe telefonul A (cel de pe care controlezi). USB direct este modul principal; wireless este secundar. Telefonul B nu are nevoie de un APK suplimentar: clientul copiază și pornește serverul oficial scrcpy 3.3.4 prin ADB.
+A necesită Android 8+. B necesită Android 5+ pentru video, Android 11+ pentru audio output și Android 12+ pentru cameră. Compatibilitatea efectivă a serverului cu actualizări Android viitoare nu este garantată.
+
+USB DIRECT • MOD PRINCIPAL
+1. Pe B activează Opțiuni dezvoltator → Depanare USB. Nu activa depanarea wireless pentru acest mod.
+2. Conectează A și B cu un cablu de DATE. A trebuie să fie USB host/OTG (telefonul care controlează USB), B este dispozitivul USB. La unele modele trebuie activat OTG sau schimbat «USB controlat de»; un adaptor OTG pe A ajută la fixarea rolului.
+3. Deschide Scrcpy pe A și acceptă permisiunea de acces USB. Aplicația nu se deschide singură la conectarea cablului.
+4. Deblochează B, acceptă «Permite depanarea USB» și bifează «Permite întotdeauna» pentru cheia lui A, dacă dorești reutilizarea autorizării.
+5. Conectarea automată USB pornește o sesiune nouă numai când Scrcpy este în prim-plan. Deschide tu aplicația după conectarea cablului sau apasă manual «Conectează USB». Dacă sunt mai multe dispozitive ADB, alegi telefonul B din listă.
+După autorizare nu sunt necesare IP, porturi, coduri wireless sau PC. Unele versiuni Android cer din nou permisiunea USB pe A după reconectarea cablului. Acest dialog este gestionat de sistem.
+La scoaterea cablului, sesiunea se închide și resursele USB sunt eliberate. La reintroducere, aplicația încearcă din nou conectarea numai dacă este în prim-plan și opțiunea automată este activă. O deconectare manuală rămâne oprită până apeși Conectează USB sau reconectezi cablul.
+Sunt folosite aceleași canale scrcpy pentru video, audio și control: touch direct cu ID-uri distincte pentru degete, mouse trackpad, clipboard și înregistrare. USB direct nu este modul scrcpy --otg/HID (acela controlează fără captură video).
+
+DEPANARE USB
+• B nu apare: verifică dacă acel cablu transferă date, dacă A este host/OTG și dacă Depanare USB este activată pe B; reconectează cablul după activare.
+• A vede telefonul, dar ecranul nu pornește: verifică pe B cererea «Permite depanarea USB», apoi deschide Consola sesiunii pentru mesajele ADB/server.
+• Pe Xiaomi, dacă imaginea apare dar touch-ul nu funcționează, verifică «USB debugging (Security settings)» pe B.
+• Nu poți schimba rolurile: verifică opțiunile USB ale ambelor dispozitive sau folosește adaptor OTG pe A și cablul de date către B.
+• Sacadări: încearcă profilul 1280 / 60 FPS / 8 Mbps sau o rezoluție mai mică; viteza și alimentarea depind de hardware și cablu.
+
+WIRELESS DEBUGGING • OPȚIONAL (Android 11+ pe B)
+1. Pe B activează Opțiuni dezvoltator → Depanare wireless.
+2. Deschide „Asociază un dispozitiv cu un cod”. Introdu în A IP-ul B, portul de ASOCIERE și codul de 6 cifre; apasă Asociază.
+3. Închide fereastra codului pe B. În pagina principală Depanare wireless este IP:port pentru CONECTARE; folosește acel port în A și apasă Conectează.
+Portul de asociere și cel de conectare sunt diferite. Portul de conectare poate fi schimbat de Android după dezactivarea depanării sau schimbarea rețelei. Reintrodu-l când este necesar.
+
+ADB TCP CLASIC
+Pe PC, cu B conectat prin USB și autorizat:
+adb devices
+adb tcpip 5555
+Apoi în aplicația A: IP-ul telefonului B și portul 5555. Acceptă pe B cheia A când apare fereastra de autorizare.
+Pe anumite dispozitive Xiaomi este necesară și opțiunea „USB debugging (Security settings)” pentru control. Un ecran vizibil fără touch funcțional poate indica permisiunea de injectare lipsă.
+
+INTERACȚIUNE • TREI MODURI
+Modul ales este păstrat pentru sesiunile următoare. Schimbarea modului eliberează butoanele și degetele active.
+
+Touch direct: atingi imaginea în punctul dorit. Sunt trimise separat ID-ul, coordonatele și presiunea fiecărui deget. Pinch/zoom și gesturile cu mai multe degete nu sunt transformate în clickuri de mouse. Numărul efectiv de degete depinde de hardware-ul A și B.
+Touchpad cu gesturi: funcționează ca un trackpad. Mișcă degetul pentru cursor; tap scurt pentru click; menține degetul nemișcat până începe apăsarea și apoi deplasează-l pentru drag; la 1×, două degete paralele derulează. Acest mod este relativ, similar unui viewer VNC.
+Touchpad cu butoane: cursorul se deplasează prin mișcarea degetului pe imagine, iar clickurile se trimit numai din butoanele Stânga și Dreapta suprapuse peste imagine, cu interior complet transparent și doar contur vizibil. Ține Stânga cu un deget și deplasează cursorul cu altul pentru drag. Ridicarea degetului de pe zona touchpad nu eliberează butonul ținut apăsat. La 1×, două degete paralele pe zona touchpad derulează. Modul cu gesturi rămâne disponibil separat.
+Zoom local în ambele moduri Touchpad: depărtează/apropie două degete pe imagine (pinch), între 1× și 6×. Imaginea video este mărită și decupată numai pe A; gestul nu trimite pinch, comenzi de zoom sau schimbări de rezoluție pe B. În zoom, deplasează două degete împreună pentru a muta zona vizibilă. La 1×, mișcarea paralelă cu două degete derulează pe B. Pentru un nou gest după pinch, ridică toate degetele. Butoanele mouse sunt independente de gesturile de pe imagine. Din meniul ••• ai Zoom −, Reset 1× și Zoom +. Touch direct revine automat la imaginea întreagă și păstrează multitouch-ul trimis către B.
+Butonul mic ••• deschide meniul sesiunii; îl poți muta prin tragere. Panoul OLED are butoane pentru cele trei moduri, Acțiuni și instrumente, Consolă și deconectare. Meniul principal și pagina Acțiuni rămân deschise după apăsarea comenzilor. Pentru a ieși explicit, apasă ×, Înapoi la control sau Back pe A. Atingerea în afara panoului nu îl închide. Pagina Acțiuni are butoane pentru navigare, volum și mute, ecran, panouri Android, clipboard, capturi și diagnostic. Poți apăsa repetat Volum + / − fără să redeschizi meniul. Ferestrele secundare pentru text sau consolă se deschid peste panou și revin la panou când le închizi. La schimbarea modului se eliberează atingerile active.
+Înapoi pe A deschide meniul sesiunii. Folosește „Înapoi pe B” pentru butonul Back de la distanță.
+Tastaturile fizice sunt redirecționate prin keycode în timpul vizualizării; pentru text Unicode folosește „Trimite text / clipboard”.
+
+SETĂRI ȘI EXEMPLE
+Profil Calitate USB: 1920 px, 60 FPS, 24000000 biți/s (24 Mbps), h264. Profilul se aplică la următoarea conectare, ca toate setările video.
+Lângă fiecare câmp editabil există un buton ▾. Poți alege valori concrete sau «Introdu manual…»; câmpul rămâne editabil. Pentru rezoluție: originală / 4320 / 3840 / 2560 / 2400 / 2160 / 1920 / 1600 / 1440 / 1280 / 1024 / 960 / 800 / 720 / 640 / 480 px. Pentru FPS: fără limită / 24 / 25 / 30 / 45 / 60 / 90 / 120 / 144 / 165 / 180 / 240. Pentru bitrate video: 0.5 până la 150 Mbps, cu valori intermediare explicite. Există liste și pentru bitrate audio, FPS și dimensiune cameră, orientare, unghi, ecran virtual și viteza cursorului. Valoarea aleasă este o configurație cerută; rata și modurile efective depind de dispozitiv.
+Profil echilibrat: rezoluție 1280, FPS 60, bitrate 8000000, codec h264.
+Rețea lentă: rezoluție 800, FPS 30, bitrate 2000000, audio dezactivat.
+Imagine originală: max_size=0. Aceasta crește solicitarea de rețea și decodare.
+HEVC: video_codec=h265. AV1: video_codec=av1. Ambele dispozitive trebuie să aibă codec compatibil; dacă ecranul rămâne negru, revino la h264.
+Camera: video_source=camera, camera_facing=back, camera_size=1920x1080. Controlul ecranului este dezactivat automat pentru o sesiune de cameră.
+Decupare: crop=1080:1920:0:0.
+Rotire: capture_orientation=90. Blocare: capture_orientation=@0.
+Sunet microfon: audio=true și audio_source=mic. Pentru output/playback suportul depinde de Android și de politica aplicației capturate.
+Înregistrare: activează record, video_codec=h264, audio_codec=aac dacă sunetul este activ. MP4-ul este generat din fluxul comprimat. Se finalizează la deconectare; schimbarea configurației video (ex. rotire) finalizează înregistrarea curentă. Reconectarea creează un fișier nou. „Exportă ultima înregistrare / captură” copiază fișierul într-un folder ales de tine.
+Captura PNG salvează imaginea afișată pe A. Dimensiunile capturii sunt cele ale suprafeței afișate.
+
+CONSOLĂ
+Afișează comenzile serverului, stdout/stderr de pe B, rezultatul comenzilor shell și erorile clientului. Butoanele Copiază, Șterge și Exportă lucrează cu jurnalul. Șterge golește jurnalul fișier și vizualizarea; Copiază încearcă întregul jurnal, iar Exportă este potrivit pentru jurnale mari. Pe ecran se păstrează ultimii 2 MB; fișierul conține tot jurnalul de după ultima ștergere.
+În timpul controlului: ••• → Consolă și comenzi. Comenzile sunt executate în shell-ul ADB de pe B. Nu este un emulator de terminal interactiv; fiecare comandă pornește un shell separat. Pentru un proces lung, folosește „Oprește comenzile shell”.
+Exemple:
+wm size — afișează dimensiunea ecranului B.
+wm density — afișează densitatea B.
+getprop ro.product.model — afișează modelul B.
+dumpsys battery — afișează starea bateriei B.
+input keyevent 3 — Home pe B.
+input keyevent 4 — Back pe B.
+settings get system screen_brightness — citește luminozitatea B.
+logcat -d -t 100 — ultimele mesaje logcat accesibile shell-ului.
+pm list packages — listează pachetele instalate.
+am start -a android.settings.SETTINGS — deschide Setări pe B.
+
+OPȚIUNI SUPLIMENTARE
+Câmpul „Opțiuni suplimentare server” folosește câte un key=value pe linie. Valorile sunt escapate pentru shell; nu folosi forma CLI --opțiune în acest câmp. Exemple:
+camera_ar=16:9
+screen_off_timeout=300000
+log_level=debug
+vd_system_decorations=true
+Opțiunile de transport și metadate sunt administrate de client și nu pot fi suprascrise. Opțiunile list_* sunt disponibile prin meniul sesiunii, iar rezultatele apar în Consolă.
+
+COMPATIBILITATE ȘI LIMITE ALE ACESTUI CLIENT
+Acest proiect implementează clientul Android pentru protocolul scrcpy 3.3.4; nu este portarea integrală a clientului desktop curent. Are ADB USB host (mod principal), ADB TCP și asociere wireless/TLS (opțional), video, audio, touch multitouch, trackpad, clipboard, înregistrare H264/AAC, capturi, controale Android și shell.
+Nu implementează modul USB OTG/HID fără oglindire, gamepad UHID, cameră virtuală V4L2, opțiunile de fereastră Windows/Linux/macOS sau flex display din versiunile ulterioare. Opțiunile exclusiv desktop din manualul de la final sunt documentație pentru PC, nu funcții activate pe A. Clipboard-ul automat A → B nu este urmărit permanent: trimiterea se face explicit din meniu. O sesiune deja pornită este păstrată când aplicația trece în fundal. Conexiunile noi și reîncercările automate pornesc numai în prim-plan.
+Video/audio/camera și codec-urile avansate depind de Android și hardware. Aplicațiile cu suprafețe protejate pot afișa negru, la fel ca în scrcpy. O actualizare Android poate necesita o versiune mai nouă de server și adaptarea protocolului.
+
+CATALOGUL SETĂRILOR CLIENTULUI
+
+max_size — Rezoluție maximă • px. Implicit: 1280. 0 = dimensiunea originală; 1280 este un punct bun de pornire. Exemplu de valoare: 1280.
+
+video_bit_rate — Bitrate video • biți/s. Implicit: 8000000. 8 Mbps = 8000000. Pentru Wi-Fi slab încearcă 2000000. Exemplu de valoare: 8000000.
+
+max_fps — FPS maxim. Implicit: 60. 30 / 60 / 90 / 120; rata efectivă depinde de B și de rețea. Exemplu de valoare: 60.
+
+video_codec — Codec video. Implicit: h264. h264|h265|av1 Exemplu de valoare: h264.
+
+video_source — Sursă video. Implicit: display. display|camera Exemplu de valoare: display.
+
+display_id — ID ecran. Implicit: 0. 0 = ecran principal. Folosește Listă ecrane în Conectare. Exemplu de valoare: 0.
+
+crop — Decupare. Implicit: gol / automat. lățime:înălțime:x:y, de exemplu 1080:1920:0:0. Gol = complet. Exemplu de valoare: 1080:1920:0:0.
+
+capture_orientation — Orientare captură. Implicit: gol / automat. Gol = auto; 0, 90, 180, 270; @0 blochează orientarea. Exemplu de valoare: 90.
+
+angle — Unghi video. Implicit: 0. Rotire în grade. Aplicată de server, nu modifică telefonul A. Exemplu de valoare: 0.
+
+video_encoder — Encoder video. Implicit: gol / automat. Gol = automat; numele se obține prin Listă encodere. Exemplu de valoare: (numele din Listă encodere).
+
+video_codec_options — Opțiuni encoder video. Implicit: gol / automat. Exemplu: i-frame-interval=1. Valori MediaFormat key[:type]=value. Exemplu de valoare: i-frame-interval=1.
+
+audio — Sunet de la B. Implicit: false. Comutator true/false. Exemplu de valoare: false.
+
+audio_codec — Codec audio. Implicit: aac. aac|opus|raw|flac Exemplu de valoare: aac.
+
+audio_bit_rate — Bitrate audio • biți/s. Implicit: 128000. Pentru AAC/Opus. RAW nu este comprimat. Exemplu de valoare: 128000.
+
+audio_source — Sursă audio. Implicit: output. output|playback|mic|mic-unprocessed|mic-camcorder|mic-voice-recognition|mic-voice-communication|voice-call|voice-call-uplink|voice-call-downlink|voice-performance Exemplu de valoare: output.
+
+audio_dup — Păstrează sunetul și pe B. Implicit: false. Comutator true/false. Exemplu de valoare: false.
+
+audio_encoder — Encoder audio. Implicit: gol / automat. Gol = automat. Exemplu de valoare: (numele din Listă encodere).
+
+audio_codec_options — Opțiuni encoder audio. Implicit: gol / automat. key[:type]=value. Opțiune avansată, depinde de encoder. Exemplu de valoare: (cheie MediaFormat suportată de encoder).
+
+camera_id — ID cameră. Implicit: gol / automat. Gol = automat. Disponibil pentru sursa camera, Android 12+. Exemplu de valoare: 0.
+
+camera_facing — Camera preferată. Implicit: gol / automat. |front|back|external Exemplu de valoare: back.
+
+camera_size — Dimensiune cameră. Implicit: gol / automat. Exemplu: 1920x1080. Gol = automat. Exemplu de valoare: 1920x1080.
+
+camera_fps — FPS cameră. Implicit: 30. 30 sau 60, dacă este suportat. Exemplu de valoare: 30.
+
+camera_high_speed — Cameră high speed. Implicit: false. Comutator true/false. Exemplu de valoare: false.
+
+new_display — Ecran virtual. Implicit: gol / automat. Gol = dezactivat; exemplu 1280x720/240. Depinde de Android-ul B. Exemplu de valoare: 1280x720/240.
+
+control — Permite control. Implicit: true. Comutator true/false. Exemplu de valoare: true.
+
+show_touches — Arată atingerile pe B. Implicit: false. Comutator true/false. Exemplu de valoare: false.
+
+stay_awake — Ține B activ la alimentare. Implicit: false. Comutator true/false. Exemplu de valoare: false.
+
+power_off_on_close — Stinge ecranul B la ieșire. Implicit: false. Comutator true/false. Exemplu de valoare: false.
+
+clipboard_autosync — Primește clipboard de la B. Implicit: true. Comutator true/false. Exemplu de valoare: true.
+
+downsize_on_error — Reduce rezoluția la eroare. Implicit: true. Comutator true/false. Exemplu de valoare: true.
+
+screenOff — Stinge ecranul B la conectare. Implicit: false. Comutator true/false. Exemplu de valoare: false.
+
+record — Înregistrează MP4 pe A. Implicit: false. Comutator true/false. Exemplu de valoare: false.
+
+reconnect — Reconectează automat. Implicit: true. Comutator true/false. Exemplu de valoare: true.
+
+mouseSpeed — Viteză cursor. Implicit: 1.2. 0.2–5.0; modul mouse este trackpad relativ, cu cursor local. Exemplu de valoare: 1.2.
+
+extra — Opțiuni suplimentare server. Implicit: gol / automat. Câte un key=value pe linie. Help conține catalogul complet; nu sunt argumente CLI --... . Exemplu de valoare: log_level=debug.
+
+CATALOG COMPLET OPȚIUNI SERVER 3.3.4
+
+scid — ID unic pentru socket; este generat automat de client.
+
+log_level — debug, info, warn sau error. Exemplu: log_level=debug.
+
+video — Canal video; clientul îl păstrează true.
+
+audio — Vezi setarea și exemplul din catalogul de mai sus.
+
+video_codec — Vezi setarea și exemplul din catalogul de mai sus.
+
+audio_codec — Vezi setarea și exemplul din catalogul de mai sus.
+
+video_source — Vezi setarea și exemplul din catalogul de mai sus.
+
+audio_source — Vezi setarea și exemplul din catalogul de mai sus.
+
+audio_dup — Vezi setarea și exemplul din catalogul de mai sus.
+
+max_size — Vezi setarea și exemplul din catalogul de mai sus.
+
+video_bit_rate — Vezi setarea și exemplul din catalogul de mai sus.
+
+audio_bit_rate — Vezi setarea și exemplul din catalogul de mai sus.
+
+max_fps — Vezi setarea și exemplul din catalogul de mai sus.
+
+angle — Vezi setarea și exemplul din catalogul de mai sus.
+
+tunnel_forward — Mod server de transport. Administrat de client: true.
+
+crop — Vezi setarea și exemplul din catalogul de mai sus.
+
+control — Vezi setarea și exemplul din catalogul de mai sus.
+
+display_id — Vezi setarea și exemplul din catalogul de mai sus.
+
+show_touches — Vezi setarea și exemplul din catalogul de mai sus.
+
+stay_awake — Vezi setarea și exemplul din catalogul de mai sus.
+
+screen_off_timeout — Timeout ecran în milisecunde. Exemplu: screen_off_timeout=300000.
+
+video_codec_options — Vezi setarea și exemplul din catalogul de mai sus.
+
+audio_codec_options — Vezi setarea și exemplul din catalogul de mai sus.
+
+video_encoder — Vezi setarea și exemplul din catalogul de mai sus.
+
+audio_encoder — Vezi setarea și exemplul din catalogul de mai sus.
+
+power_off_on_close — Vezi setarea și exemplul din catalogul de mai sus.
+
+clipboard_autosync — Vezi setarea și exemplul din catalogul de mai sus.
+
+downsize_on_error — Vezi setarea și exemplul din catalogul de mai sus.
+
+cleanup — Restabilește setările schimbate de server la închidere. Administrat de client: true.
+
+power_on — Aprinde ecranul la conectare. Exemplu: power_on=false.
+
+list_encoders — Listează encoderele. Din meniul sesiunii → Listă encodere.
+
+list_displays — Listează ecranele. Din meniul sesiunii → Listă ecrane.
+
+list_cameras — Listează camerele. Din meniul sesiunii → Listă camere.
+
+list_camera_sizes — Listează modurile camerelor. Din meniul sesiunii → Listă dimensiuni camere.
+
+list_apps — Listează aplicațiile. Din meniul sesiunii → Listă aplicații.
+
+camera_id — Vezi setarea și exemplul din catalogul de mai sus.
+
+camera_size — Vezi setarea și exemplul din catalogul de mai sus.
+
+camera_facing — Vezi setarea și exemplul din catalogul de mai sus.
+
+camera_ar — Raport cameră. Exemplu: camera_ar=16:9.
+
+camera_fps — Vezi setarea și exemplul din catalogul de mai sus.
+
+camera_high_speed — Vezi setarea și exemplul din catalogul de mai sus.
+
+new_display — Vezi setarea și exemplul din catalogul de mai sus.
+
+vd_destroy_content — Distruge conținutul ecranului virtual la închidere. Exemplu: vd_destroy_content=true.
+
+vd_system_decorations — Decorații sistem pe ecran virtual. Exemplu: vd_system_decorations=true.
+
+capture_orientation — Vezi setarea și exemplul din catalogul de mai sus.
+
+display_ime_policy — Politica tastaturii pentru ecran virtual. Valori integer Android: 0 local, 1 fallback, 2 hide. Exemplu: display_ime_policy=0.
+
+send_device_meta — Metadate nume dispozitiv. true, administrat de client.
+
+send_frame_meta — Antet per pachet pentru timestamp și flags. true, administrat de client.
+
+send_dummy_byte — Octet de handshake. true, administrat de client.
+
+send_codec_meta — ID codec și dimensiuni inițiale. true, administrat de client.
+
+raw_stream — Dezactivează antetele protocolului. Incompatibil cu parserul clientului; nu poate fi suprascris.
+
+local — Opțiune server avansată; consultă documentația oficială.
+
+fallback — Opțiune server avansată; consultă documentația oficială.
+
+hide — Opțiune server avansată; consultă documentația oficială.
+
+SURSE ȘI LICENȚE
+Server/protocol/documentație: https://github.com/Genymobile/scrcpy/tree/v3.3.4 — Copyright Romain Vimont, Genymobile, Apache License 2.0.
+Transport USB: https://developer.android.com/develop/connectivity/usb/host și https://android.googlesource.com/platform/packages/modules/adb/+/HEAD/docs/dev/zero_length_packet.md
+Biblioteca ADB și pairing: https://github.com/MuntashirAkon/libadb-android/tree/3.1.1 — Muntashir Al-Islam, Apache License 2.0 / GPL-3.0-or-later; aici se folosește alternativa Apache.
+TLS: https://github.com/google/conscrypt — licențele sunt incluse în distribuția dependenței.
+API-uri: https://developer.android.com/reference/android/media/MediaCodec și MediaMuxer.
+
+MANUALUL DESKTOP SCRCPY 3.3.4 (ENGLEZĂ)
+Opțiunile din această secțiune sunt pentru scrcpy pe PC. Clientul Android acceptă numai funcțiile explicate mai sus. Pe PC, scrcpy.exe --help oferă lista exactă pentru versiunea instalată.
+
+HELP SCRCPY — exemple și explicații
+
+Setările din pagina principală se aplică la PORNIRE. Argumentele de mai jos se pun în câmpul „Argumente extra”.
+În PowerShell/CMD, înaintea lor se scrie scrcpy.exe.
+
+--always-on-top --borderless : fereastră deasupra celorlalte, fără margini.
+--max-size=1280 --max-fps=60 --video-bit-rate=8M : profil video echilibrat.
+--video-codec=h265 : compresie HEVC, dacă telefonul și PC-ul o suportă.
+--no-audio : fără sunet. --audio-source=mic : microfonul telefonului.
+--turn-screen-off --stay-awake : stinge ecranul fizic, păstrează sesiunea activă.
+--record=telefon.mp4 : înregistrare în folderul scrcpy.
+--serial=SERIAL : selectează un dispozitiv (adb devices arată serialele).
+--tcpip=192.168.1.50:5555 : conectare prin rețea, cu ADB deja activat.
+--crop=1080:1920:0:0 : decupare lățime:înălțime:x:y.
+--no-control : doar vizualizare.
+
+Lista AUTORITATIVĂ pentru versiunea instalată este afișată mai jos după scrcpy.exe --help, inclusiv scurtăturile. Manualul inclus este fallback pentru scrcpy 3.3.4; opțiunile pot diferi în altă versiune.
+
+
+NAME
+scrcpy - Display and control your Android device
+
+
+
+SYNOPSIS
+scrcpy
+[ options ]
+
+
+
+DESCRIPTION
+scrcpy
+provides display and control of Android devices connected on USB (or over TCP/IP). It does not require any root access.
+
+
+
+OPTIONS
+
+--always-on-top
+Make scrcpy window always on top (above other windows).
+
+--angle  degrees
+Rotate the video content by a custom angle, in degrees (clockwise).
+
+--audio-bit-rate  value
+Encode the audio at the given bit rate, expressed in bits/s. Unit suffixes are supported: 'K' (x1000) and 'M' (x1000000).
+
+Default is 128K (128000).
+
+--audio-buffer  ms
+Configure the audio buffering delay (in milliseconds).
+
+Lower values decrease the latency, but increase the likelihood of buffer underrun (causing audio glitches).
+
+Default is 50.
+
+--audio-codec  name
+Select an audio codec (opus, aac, flac or raw).
+
+Default is opus.
+
+--audio-codec-options  key[:type]=value[,...]
+Set a list of comma-separated key:type=value options for the device audio encoder.
+
+The possible values for 'type' are 'int' (default), 'long', 'float' and 'string'.
+
+The list of possible codec options is available in the Android documentation:
+
+<https://d.android.com/reference/android/media/MediaFormat>
+
+--audio-dup
+Duplicate audio (capture and keep playing on the device).
+
+This feature is only available with --audio-source=playback.
+
+--audio-encoder  name
+Use a specific MediaCodec audio encoder (depending on the codec provided by --audio-codec).
+
+The available encoders can be listed by --list-encoders.
+
+--audio-source  source
+Select the audio source. Possible values are:
+
+ - output: forwards the whole audio output, and disables playback on the device.
+ - playback: captures the audio playback (Android apps can opt-out, so the whole output is not necessarily captured).
+ - mic: captures the microphone.
+ - mic-unprocessed: captures the microphone unprocessed (raw) sound.
+ - mic-camcorder: captures the microphone tuned for video recording, with the same orientation as the camera if available.
+ - mic-voice-recognition: captures the microphone tuned for voice recognition.
+ - mic-voice-communication: captures the microphone tuned for voice communications (it will for instance take advantage of echo cancellation or automatic gain control if available).
+ - voice-call: captures voice call.
+ - voice-call-uplink: captures voice call uplink only.
+ - voice-call-downlink: captures voice call downlink only.
+ - voice-performance: captures audio meant to be processed for live performance (karaoke), includes both the microphone and the device playback.
+
+Default is output.
+
+--audio-output-buffer  ms
+Configure the size of the SDL audio output buffer (in milliseconds).
+
+If you get robotic audio playback, you should test with a higher value (10). Do not change this setting otherwise.
+
+Default is 5.
+
+-b, --video-bit-rate  value
+Encode the video at the given bit rate, expressed in bits/s. Unit suffixes are supported: 'K' (x1000) and 'M' (x1000000).
+
+Default is 8M (8000000).
+
+--camera-ar  ar
+Select the camera size by its aspect ratio (+/- 10%).
+
+Possible values are sensor (use the camera sensor aspect ratio), num:den (e.g. 4:3) and value (e.g. 1.6).
+
+--camera-facing  facing
+Select the device camera by its facing direction.
+
+Possible values are front, back and external.
+
+--camera-fps  fps
+Specify the camera capture frame rate.
+
+If not specified, Android's default frame rate (30 fps) is used.
+
+--camera-high-speed
+Enable high-speed camera capture mode.
+
+This mode is restricted to specific resolutions and frame rates, listed by --list-camera-sizes.
+
+--camera-id  id
+Specify the device camera id to mirror.
+
+The available camera ids can be listed by --list-cameras.
+
+--camera-size  widthxheight
+Specify an explicit camera capture size.
+
+--capture-orientation  value
+Possible values are 0, 90, 180, 270, flip0, flip90, flip180 and flip270, possibly prefixed by '@'.
+
+The number represents the clockwise rotation in degrees; the flip keyword applies a horizontal flip before the rotation.
+
+If a leading '@' is passed (@90) for display capture, then the rotation is locked, and is relative to the natural device orientation.
+
+If '@' is passed alone, then the rotation is locked to the initial device orientation.
+
+Default is 0.
+
+--crop  width:height:x:y
+Crop the device screen on the server.
+
+The values are expressed in the device natural orientation (typically, portrait for a phone, landscape for a tablet).
+
+-d, --select-usb
+Use USB device (if there is exactly one, like adb -d).
+
+Also see -e (--select-tcpip).
+
+--disable-screensaver
+Disable screensaver while scrcpy is running.
+
+--display-id  id
+Specify the device display id to mirror.
+
+The available display ids can be listed by --list-displays.
+
+Default is 0.
+
+--display-ime-policy  value
+Set the policy for selecting where the IME should be displayed.
+
+Possible values are local, fallback and hide:
+
+ - local means that the IME should appear on the local display.
+ - fallback means that the IME should appear on a fallback display (the default display).
+ - hide means that the IME should be hidden.
+
+By default, the IME policy is left unchanged.
+
+
+--display-orientation  value
+Set the initial display orientation.
+
+Possible values are 0, 90, 180, 270, flip0, flip90, flip180 and flip270. The number represents the clockwise rotation in degrees; the flip keyword applies a horizontal flip before the rotation.
+
+Default is 0.
+
+-e, --select-tcpip
+Use TCP/IP device (if there is exactly one, like adb -e).
+
+Also see -d (--select-usb).
+
+-f, --fullscreen
+Start in fullscreen.
+
+--force-adb-forward
+Do not attempt to use adb reverse to connect to the device.
+
+-G
+Same as --gamepad=uhid, or --keyboard=aoa if --otg is set.
+
+--gamepad  mode
+Select how to send gamepad inputs to the device.
+
+Possible values are disabled, uhid and aoa:
+
+ - disabled does not send gamepad inputs to the device.
+ - uhid simulates physical HID gamepads using the Linux HID kernel module on the device.
+ - aoa simulates physical HID gamepads using the AOAv2 protocol. It may only work over USB.
+
+Also see --keyboard\f and R--mouse.
+-h, --help
+Print this help.
+
+-K
+Same as --keyboard=uhid, or --keyboard=aoa if --otg is set.
+
+--keyboard  mode
+Select how to send keyboard inputs to the device.
+
+Possible values are disabled, sdk, uhid and aoa:
+
+ - disabled does not send keyboard inputs to the device.
+ - sdk uses the Android system API to deliver keyboard events to applications.
+ - uhid simulates a physical HID keyboard using the Linux HID kernel module on the device.
+ - aoa simulates a physical HID keyboard using the AOAv2 protocol. It may only work over USB.
+
+For uhid and aoa, the keyboard layout must be configured (once and for all) on the device, via Settings -> System -> Languages and input -> Physical keyboard. This settings page can be started directly using the shortcut MOD+k (except in OTG mode), or by executing:
+
+    adb shell am start -a android.settings.HARD_KEYBOARD_SETTINGS
+
+This option is only available when the HID keyboard is enabled (or a physical keyboard is connected).
+
+Also see --mouse and --gamepad.
+
+--kill-adb-on-close
+Kill adb when scrcpy terminates.
+
+--legacy-paste
+Inject computer clipboard text as a sequence of key events on Ctrl+v (like MOD+Shift+v).
+
+This is a workaround for some devices not behaving as expected when setting the device clipboard programmatically.
+
+--list-apps
+List Android apps installed on the device.
+
+--list-camera-sizes
+List the valid camera capture sizes.
+
+--list-cameras
+List cameras available on the device.
+
+--list-encoders
+List video and audio encoders available on the device.
+
+--list-displays
+List displays available on the device.
+
+-m, --max-size  value
+Limit both the width and height of the video to value. The other dimension is computed so that the device aspect-ratio is preserved.
+
+Default is 0 (unlimited).
+
+-M
+Same as --mouse=uhid, or --mouse=aoa if --otg is set.
+
+--max-fps  value
+Limit the framerate of screen capture (officially supported since Android 10, but may work on earlier versions).
+
+--mouse  mode
+Select how to send mouse inputs to the device.
+
+Possible values are disabled, sdk, uhid and aoa:
+
+ - disabled does not send mouse inputs to the device.
+ - sdk uses the Android system API to deliver mouse events to applications.
+ - uhid simulates a physical HID mouse using the Linux HID kernel module on the device.
+ - aoa simulates a physical mouse using the AOAv2 protocol. It may only work over USB.
+
+In uhid and aoa modes, the computer mouse is captured to control the device directly (relative mouse mode).
+
+LAlt, LSuper or RSuper toggle the capture mode, to give control of the mouse back to the computer.
+
+Also see --keyboard and --gamepad.
+
+--mouse-bind  xxxx[:xxxx]
+Configure bindings of secondary clicks.
+
+The argument must be one or two sequences (separated by ':') of exactly 4 characters, one for each secondary click (in order: right click, middle click, 4th click, 5th click).
+
+The first sequence defines the primary bindings, used when a mouse button is pressed alone. The second sequence defines the secondary bindings, used when a mouse button is pressed while the Shift key is held.
+
+If the second sequence of bindings is omitted, then it is the same as the first one.
+
+Each character must be one of the following:
+
+ - '+': forward the click to the device
+ - '-': ignore the click
+ - 'b': trigger shortcut BACK (or turn screen on if off)
+ - 'h': trigger shortcut HOME
+ - 's': trigger shortcut APP_SWITCH
+ - 'n': trigger shortcut expand notification panel
+
+Default is 'bhsn:++++' for SDK mouse, and '++++:bhsn' for AOA and UHID.
+
+
+-n, --no-control
+Disable device control (mirror the device in read-only).
+
+-N, --no-playback
+Disable video and audio playback on the computer (equivalent to --no-video-playback --no-audio-playback).
+
+--new-display[=[widthxheight][/dpi]]
+Create a new display with the specified resolution and density. If not provided, they default to the main display dimensions and DPI.
+
+Examples:
+
+    --new-display=1920x1080
+    --new-display=1920x1080/420
+    --new-display         # main display size and density
+    --new-display=/240    # main display size and 240 dpi
+
+--no-audio
+Disable audio forwarding.
+
+--no-audio-playback
+Disable audio playback on the computer.
+
+--no-cleanup
+By default, scrcpy removes the server binary from the device and restores the device state (show touches, stay awake and power mode) on exit.
+
+This option disables this cleanup.
+
+--no-clipboard-autosync
+By default, scrcpy automatically synchronizes the computer clipboard to the device clipboard before injecting Ctrl+v, and the device clipboard to the computer clipboard whenever it changes.
+
+This option disables this automatic synchronization.
+
+--no-downsize-on-error
+By default, on MediaCodec error, scrcpy automatically tries again with a lower definition.
+
+This option disables this behavior.
+
+--no-key-repeat
+Do not forward repeated key events when a key is held down.
+
+--no-mipmaps
+If the renderer is OpenGL 3.0+ or OpenGL ES 2.0+, then mipmaps are automatically generated to improve downscaling quality. This option disables the generation of mipmaps.
+
+--no-mouse-hover
+Do not forward mouse hover (mouse motion without any clicks) events.
+
+--no-power-on
+Do not power on the device on start.
+
+--no-vd-destroy-content
+Disable virtual display destroy content on removal flag.
+
+With this option, when the virtual display is closed, the running apps are moved to the main display rather than being destroyed.
+
+--no-vd-system-decorations
+Disable virtual display system decorations flag.
+
+--no-video
+Disable video forwarding.
+
+--no-video-playback
+Disable video playback on the computer.
+
+--no-window
+Disable scrcpy window. Implies --no-video-playback.
+
+--orientation  value
+Same as --display-orientation=value --record-orientation=value.
+
+--otg
+Run in OTG mode: simulate physical keyboard and mouse, as if the computer keyboard and mouse were plugged directly to the device via an OTG cable.
+
+In this mode, adb (USB debugging) is not necessary, and mirroring is disabled.
+
+LAlt, LSuper or RSuper toggle the mouse capture mode, to give control of the mouse back to the computer.
+
+If any of --hid-keyboard or --hid-mouse is set, only enable keyboard or mouse respectively, otherwise enable both.
+
+It may only work over USB.
+
+See --keyboard, --mouse and --gamepad.
+
+-p, --port  port[:port]
+Set the TCP port (range) used by the client to listen.
+
+Default is 27183:27199.
+
+--pause-on-exit[=mode]
+Configure pause on exit. Possible values are true (always pause on exit), false (never pause on exit) and if-error (pause only if an error occurred).
+
+This is useful to prevent the terminal window from automatically closing, so that error messages can be read.
+
+Default is false.
+
+Passing the option without argument is equivalent to passing true.
+
+--power-off-on-close
+Turn the device screen off when closing scrcpy.
+
+--prefer-text
+Inject alpha characters and space as text events instead of key events.
+
+This avoids issues when combining multiple keys to enter special characters,
+but breaks the expected behavior of alpha keys in games (typically WASD).
+
+--print-fps
+Start FPS counter, to print framerate logs to the console. It can be started or stopped at any time with MOD+i.
+
+--push-target  path
+Set the target directory for pushing files to the device by drag & drop. It is passed as-is to adb push.
+
+Default is /sdcard/Download/.
+
+-r, --record  file
+Record screen to
+file .
+
+The format is determined by the
+--record-format
+option if set, or by the file extension.
+
+--raw-key-events
+Inject key events for all input keys, and ignore text events.
+
+--record-format  format
+Force recording format (mp4, mkv, m4a, mka, opus, aac, flac or wav).
+
+--record-orientation  value
+Set the record orientation.
+
+Possible values are 0, 90, 180 and 270. The number represents the clockwise rotation in degrees.
+
+Default is 0.
+
+--render-driver  name
+Request SDL to use the given render driver (this is just a hint).
+
+Supported names are currently direct3d, opengl, opengles2, opengles, metal and software.
+
+<https://wiki.libsdl.org/SDL_HINT_RENDER_DRIVER>
+
+--require-audio
+By default, scrcpy mirrors only the video if audio capture fails on the device. This option makes scrcpy fail if audio is enabled but does not work.
+
+-s, --serial  number
+The device serial number. Mandatory only if several devices are connected to adb.
+
+-S, --turn-screen-off
+Turn the device screen off immediately.
+
+--screen-off-timeout  seconds
+Set the screen off timeout while scrcpy is running (restore the initial value on exit).
+
+--shortcut-mod  key[+...]][,...]
+Specify the modifiers to use for scrcpy shortcuts. Possible keys are lctrl, rctrl, lalt, ralt, lsuper and rsuper.
+
+Several shortcut modifiers can be specified, separated by ','.
+
+For example, to use either LCtrl or LSuper for scrcpy shortcuts, pass lctrl,lsuper.
+
+Default is lalt,lsuper (left-Alt or left-Super).
+
+--start-app  name
+Start an Android app, by its exact package name.
+
+Add a '?' prefix to select an app whose name starts with the given name, case-insensitive (retrieving app names on the device may take some time):
+
+    scrcpy --start-app=?firefox
+
+Add a '+' prefix to force-stop before starting the app:
+
+    scrcpy --new-display --start-app=+org.mozilla.firefox
+
+Both prefixes can be used, in that order:
+
+    scrcpy --start-app=+?firefox
+
+-t, --show-touches
+Enable show touches on start, restore the initial value on exit.
+
+It only shows physical touches (not clicks from scrcpy).
+
+--tcpip[=[+]ip[:port]]
+Configure and connect the device over TCP/IP.
+
+If a destination address is provided, then scrcpy connects to this address before starting. The device must listen on the given TCP port (default is 5555).
+
+If no destination address is provided, then scrcpy attempts to find the IP address and adb port of the current device (typically connected over USB), enables TCP/IP mode if necessary, then connects to this address before starting.
+
+Prefix the address with a '+' to force a reconnection.
+
+--time-limit  seconds
+Set the maximum mirroring time, in seconds.
+
+--tunnel-host  ip
+Set the IP address of the adb tunnel to reach the scrcpy server. This option automatically enables --force-adb-forward.
+
+Default is localhost.
+
+--tunnel-port  port
+Set the TCP port of the adb tunnel to reach the scrcpy server. This option automatically enables --force-adb-forward.
+
+Default is 0 (not forced): the local port used for establishing the tunnel will be used.
+
+-v, --version
+Print the version of scrcpy.
+
+-V, --verbosity  value
+Set the log level (verbose, debug, info, warn or error).
+
+Default is info for release builds, debug for debug builds.
+
+--v4l2-sink  /dev/videoN
+Output to v4l2loopback device.
+
+--v4l2-buffer  ms
+Add a buffering delay (in milliseconds) before pushing frames. This increases latency to compensate for jitter.
+
+This option is similar to --video-buffer, but specific to V4L2 sink.
+
+Default is 0 (no buffering).
+
+--video-buffer  ms
+Add a buffering delay (in milliseconds) before displaying video frames.
+
+This increases latency to compensate for jitter.
+
+Default is 0 (no buffering).
+
+--video-codec  name
+Select a video codec (h264, h265 or av1).
+
+Default is h264.
+
+--video-codec-options  key[:type]=value[,...]
+Set a list of comma-separated key:type=value options for the device video encoder.
+
+The possible values for 'type' are 'int' (default), 'long', 'float' and 'string'.
+
+The list of possible codec options is available in the Android documentation:
+
+<https://d.android.com/reference/android/media/MediaFormat>
+
+--video-encoder  name
+Use a specific MediaCodec video encoder (depending on the codec provided by --video-codec).
+
+The available encoders can be listed by --list-encoders.
+
+--video-source  source
+Select the video source (display or camera).
+
+Camera mirroring requires Android 12+.
+
+Default is display.
+
+-w, --stay-awake
+Keep the device on while scrcpy is running, when the device is plugged in.
+
+--window-borderless
+Disable window decorations (display borderless window).
+
+--window-title  text
+Set a custom window title.
+
+--window-x  value
+Set the initial window horizontal position.
+
+Default is auto.
+
+--window-y  value
+Set the initial window vertical position.
+
+Default is auto.
+
+--window-width  value
+Set the initial window width.
+
+Default is 0 (automatic).
+
+--window-height  value
+Set the initial window height.
+
+Default is 0 (automatic).
+
+
+EXIT STATUS
+scrcpy
+will exit with code 0 on normal program termination. If an initial
+connection cannot be established, the exit code 1 will be returned. If the
+device disconnects while a session is active, exit code 2 will be returned.
+
+
+SHORTCUTS
+
+In the following list, MOD is the shortcut modifier. By default, it's (left)
+Alt or (left) Super, but it can be configured by --shortcut-mod (see above).
+
+MOD+f
+Switch fullscreen mode
+
+MOD+Left
+Rotate display left
+
+MOD+Right
+Rotate display right
+
+MOD+Shift+Left, MOD+Shift+Right
+Flip display horizontally
+
+MOD+Shift+Up, MOD+Shift+Down
+Flip display vertically
+
+MOD+z
+Pause or re-pause display
+
+MOD+Shift+z
+Unpause display
+
+MOD+Shift+r
+Reset video capture/encoding
+
+MOD+g
+Resize window to 1:1 (pixel-perfect)
+
+MOD+w, Double-click on black borders
+Resize window to remove black borders
+
+MOD+h, Home, Middle-click
+Click on HOME
+
+MOD+b, MOD+Backspace, Right-click (when screen is on)
+Click on BACK
+
+MOD+s
+Click on APP_SWITCH
+
+MOD+m
+Click on MENU
+
+MOD+Up
+Click on VOLUME_UP
+
+MOD+Down
+Click on VOLUME_DOWN
+
+MOD+p
+Click on POWER (turn screen on/off)
+
+Right-click (when screen is off)
+Turn screen on
+
+MOD+o
+Turn device screen off (keep mirroring)
+
+MOD+Shift+o
+Turn device screen on
+
+MOD+r
+Rotate device screen
+
+MOD+n
+Expand notification panel
+
+MOD+Shift+n
+Collapse notification panel
+
+Mod+c
+Copy to clipboard (inject COPY keycode, Android >= 7 only)
+
+Mod+x
+Cut to clipboard (inject CUT keycode, Android >= 7 only)
+
+MOD+v
+Copy computer clipboard to device, then paste (inject PASTE keycode, Android >= 7 only)
+
+MOD+Shift+v
+Inject computer clipboard text as a sequence of key events
+
+MOD+k
+Open keyboard settings on the device (for HID keyboard only)
+
+MOD+i
+Enable/disable FPS counter (print frames/second in logs)
+
+Ctrl+click-and-move
+Pinch-to-zoom and rotate from the center of the screen
+
+Shift+click-and-move
+Tilt vertically (slide with 2 fingers)
+
+Ctrl+Shift+click-and-move
+Tilt horizontally (slide with 2 fingers)
+
+Drag & drop APK file
+Install APK from computer
+
+Drag & drop non-APK file
+Push file to device (see --push-target)
+
+
+
+Environment variables
+
+ADB
+Path to adb.
+
+ANDROID_SERIAL
+Device serial to use if no selector (-s, -d, -e or --tcpip=addr) is specified.
+
+SCRCPY_ICON_PATH
+Path to the program icon.
+
+SCRCPY_SERVER_PATH
+Path to the server binary.
+
+
+
+AUTHORS
+scrcpy
+is written by Romain Vimont.
+
+This manual page was written by
+mmyangfl@gmail.com
+Yangfl
+
+for the Debian Project (and may be used by others).
+
+
+
+REPORTING BUGS
+Report bugs to <https://github.com/Genymobile/scrcpy/issues>.
+
+
+COPYRIGHT
+Copyright \(co 2018 Genymobile <https://www.genymobile.com>
+
+Copyright \(co 2018-2025 Romain Vimont <rom@rom1v.com>
+
+Licensed under the Apache License, Version 2.0.
+
+
+WWW
+<https://github.com/Genymobile/scrcpy>

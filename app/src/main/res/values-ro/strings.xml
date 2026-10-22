@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_001" formatted="false">"Touch direct"</string>
+    <string name="text_002" formatted="false">"Touchpad cu butoane"</string>
+    <string name="text_003" formatted="false">"Touchpad cu gesturi"</string>
+    <string name="text_004" formatted="false">"Mod touch direct: multitouch."</string>
+    <string name="text_005" formatted="false">"Touchpad cu gesturi: tap = click, menține pentru drag. Pinch = zoom local; la 1× două degete paralele = scroll, în zoom = deplasarea imaginii."</string>
+    <string name="text_006" formatted="false">"Touchpad cu butoane transparente peste imagine. Ține Stânga și deplasează cursorul cu alt deget pentru drag. Pinch = zoom local; în zoom, două degete deplasează imaginea pe A."</string>
+    <string name="text_007" formatted="false">"Conectare: "</string>
+    <string name="text_008" formatted="false">"USB direct → "</string>
+    <string name="text_009" formatted="false">". Pe B acceptă «Permite depanarea USB»; poți bifa autorizarea permanentă pentru A."</string>
+    <string name="text_010" formatted="false">"ADB USB nu s-a conectat"</string>
+    <string name="text_011" formatted="false">"ADB rețea → "</string>
+    <string name="text_012" formatted="false">". Acceptă autorizarea pe B dacă apare."</string>
+    <string name="text_013" formatted="false">"ADB nu s-a conectat"</string>
+    <string name="text_014" formatted="false">" copiat pe B."</string>
+    <string name="text_015" formatted="false">"Serverul nu a deschis toate canalele. Verifică erorile SERVER din Consolă."</string>
+    <string name="text_016" formatted="false">"Handshake video invalid"</string>
+    <string name="text_017" formatted="false">"Dimensiuni video invalide"</string>
+    <string name="text_018" formatted="false">"Conectat: "</string>
+    <string name="text_019" formatted="false">"Fluxul video s-a închis"</string>
+    <string name="text_020" formatted="false">"Socket scrcpy indisponibil"</string>
+    <string name="text_021" formatted="false">"Conexiune anulată"</string>
+    <string name="text_022" formatted="false">"Răspuns SYNC invalid"</string>
+    <string name="text_023" formatted="false">"Mesaj control necunoscut: "</string>
+    <string name="text_024" formatted="false">"Canal control: "</string>
+    <string name="text_025" formatted="false">"Sunet indisponibil pe B; continui cu video."</string>
+    <string name="text_026" formatted="false">"Audio oprit: "</string>
+    <string name="text_027" formatted="false">"Pachet PCM invalid"</string>
+    <string name="text_028" formatted="false">"Codec necunoscut: "</string>
+    <string name="text_029" formatted="false">"Config audio invalid"</string>
+    <string name="text_030" formatted="false">"Lipsește configurația audio"</string>
+    <string name="text_031" formatted="false">"Pachet media invalid: "</string>
+    <string name="text_032" formatted="false">"Înregistrarea s-a încheiat la schimbarea configurației video (ex. rotire). Export disponibil în meniu."</string>
+    <string name="text_033" formatted="false">"Înregistrare oprită: "</string>
+    <string name="text_034" formatted="false">"Pachet prea mare pentru decoder"</string>
+    <string name="text_035" formatted="false">"Decoder video indisponibil; încearcă h264/rezoluție mai mică"</string>
+    <string name="text_036" formatted="false">"Conectează mai întâi telefonul B."</string>
+    <string name="text_037" formatted="false">"Comenzile shell au fost oprite."</string>
+    <string name="text_038" formatted="false">"Listare: "</string>
+    <string name="text_039" formatted="false">"Oprit manual"</string>
+    <string name="text_040" formatted="false">"Anulat"</string>
+    <string name="text_041" formatted="false">"Buton mouse invalid"</string>
+    <string name="text_042" formatted="false">"Coada de control este plină; sesiunea este oprită pentru a elibera toate atingerile."</string>
+    <string name="text_043" formatted="false">"Clipboard prea mare"</string>
+    <string name="text_044" formatted="false">"Antet ADB incomplet"</string>
+    <string name="text_045" formatted="false">"Magic ADB USB invalid"</string>
+    <string name="text_046" formatted="false">"Lungime pachet ADB USB invalidă: "</string>
+    <string name="text_047" formatted="false">"Endpoint USB invalid"</string>
+    <string name="text_048" formatted="false">"Originală • fără redimensionare"</string>
+    <string name="text_049" formatted="false">"Fără limită FPS"</string>
+    <string name="text_050" formatted="false">"Automată"</string>
+    <string name="text_051" formatted="false">"Blochează la 0°"</string>
+    <string name="text_052" formatted="false">"Blochează la 90°"</string>
+    <string name="text_053" formatted="false">"Blochează la 180°"</string>
+    <string name="text_054" formatted="false">"Blochează la 270°"</string>
+    <string name="text_055" formatted="false">"Dezactivat"</string>
+    <string name="text_056" formatted="false">"Fără decupare"</string>
+    <string name="text_057" formatted="false">"0 • Ecran principal"</string>
+    <string name="text_058" formatted="false">"ID 0 • dacă există pe B"</string>
+    <string name="text_059" formatted="false">"ID 1 • dacă există pe B"</string>
+    <string name="text_060" formatted="false">"Opțiuni implicite"</string>
+    <string name="text_061" formatted="false">"Cadru cheie la 1 s"</string>
+    <string name="text_062" formatted="false">"Cadru cheie la 2 s"</string>
+    <string name="text_063" formatted="false">"Fără opțiuni suplimentare"</string>
+    <string name="text_064" formatted="false">"Log detaliat"</string>
+    <string name="text_065" formatted="false">"Cameră 16:9"</string>
+    <string name="text_066" formatted="false">"Automat / implicit"</string>
+    <string name="text_067" formatted="false">"Cheie ADB invalida"</string>
+    <string name="text_068" formatted="false">"Certificat ADB invalid"</string>
+    <string name="text_069" formatted="false">"Scrcpy • USB direct / wireless • server "</string>
+    <string name="text_070" formatted="false">"Permisiunea USB pe A a fost refuzată sau cablul a fost scos."</string>
+    <string name="text_071" formatted="false">"Permisiune USB neacordată. Apasă Conectează USB pentru a reîncerca."</string>
+    <string name="text_072" formatted="false">"Cablul USB a fost deconectat. Reconectează-l pentru detectare automată."</string>
+    <string name="text_073" formatted="false">"A nu declară suport USB host/OTG."</string>
+    <string name="text_074" formatted="false">"Niciun telefon ADB prin USB. Verifică: Depanare USB pe B, cablu de DATE, rol host/OTG pe A și telefonul B deblocat."</string>
+    <string name="text_075" formatted="false">"Alege telefonul B"</string>
+    <string name="text_076" formatted="false">"Anulează"</string>
+    <string name="text_077" formatted="false">"Aștept permisiunea USB pe A pentru "</string>
+    <string name="text_078" formatted="false">"Permisiune USB: "</string>
+    <string name="text_079" formatted="false">"USB: conectare la "</string>
+    <string name="text_080" formatted="false">"Setări USB: "</string>
+    <string name="text_081" formatted="false">"by sw3gmach1n3  ·  A controlează B"</string>
+    <string name="text_082" formatted="false">"Neconectat"</string>
+    <string name="text_083" formatted="false">"Conectare"</string>
+    <string name="text_084" formatted="false">"Setări"</string>
+    <string name="text_085" formatted="false">"Consolă"</string>
+    <string name="text_086" formatted="false">"USB direct • recomandat"</string>
+    <string name="text_087" formatted="false">"Conectează A la B printr-un cablu de date. A trebuie să fie USB host/OTG, iar pe B activează Depanare USB. Pe A accepți accesul USB; pe B accepți cheia ADB a lui A."</string>
+    <string name="text_088" formatted="false">"Detectez telefoanele USB…"</string>
+    <string name="text_089" formatted="false">"Conectare USB automată doar în prim-plan"</string>
+    <string name="text_090" formatted="false">"Conectează USB"</string>
+    <string name="text_091" formatted="false">"Reîmprospătează dispozitivele USB"</string>
+    <string name="text_092" formatted="false">"Fără IP, fără asociere wireless, fără PC. Dacă B nu apare, verifică sensul OTG/«USB controlat de» și cablul de date."</string>
+    <string name="text_093" formatted="false">"Wireless / IP • opțional"</string>
+    <string name="text_094" formatted="false">"Telefonul B • rețea"</string>
+    <string name="text_095" formatted="false">"Opțiune secundară: A și B trebuie să se poată accesa prin rețea."</string>
+    <string name="text_096" formatted="false">"IP / nume gazdă B"</string>
+    <string name="text_097" formatted="false">"Port de CONECTARE ADB"</string>
+    <string name="text_098" formatted="false">"Portul principal Wireless debugging"</string>
+    <string name="text_099" formatted="false">"Conectează prin rețea"</string>
+    <string name="text_100" formatted="false">"Asociere wireless • Android 11+"</string>
+    <string name="text_101" formatted="false">"Pe B: Depanare wireless → Asociază cu un cod. Portul de asociere este diferit de portul de conectare."</string>
+    <string name="text_102" formatted="false">"Port de ASOCIERE"</string>
+    <string name="text_103" formatted="false">"Exemplu: 37123"</string>
+    <string name="text_104" formatted="false">"Cod de asociere"</string>
+    <string name="text_105" formatted="false">"Codul afișat de B"</string>
+    <string name="text_106" formatted="false">"Asociază A cu B"</string>
+    <string name="text_107" formatted="false">"ADB TCP clasic"</string>
+    <string name="text_108" formatted="false">"Opțional: adb tcpip 5555 prin PC, apoi IP B și portul 5555. Pentru USB direct NU este necesară această comandă."</string>
+    <string name="text_109" formatted="false">"Exportă ultima înregistrare / captură"</string>
+    <string name="text_110" formatted="false">"Setări de sesiune"</string>
+    <string name="text_111" formatted="false">"Se aplică la următoarea conectare. Valorile sunt salvate automat."</string>
+    <string name="text_112" formatted="false">"Calitate USB • 1920 px / 60 FPS / 24 Mbps"</string>
+    <string name="text_113" formatted="false">"Profil echilibrat • 1280 / 60 FPS / 8 Mbps"</string>
+    <string name="text_114" formatted="false">"Profil conexiune slabă • 800 / 30 FPS / 2 Mbps"</string>
+    <string name="text_115" formatted="false">"Activat"</string>
+    <string name="text_116" formatted="false">"Valori disponibile pentru "</string>
+    <string name="text_117" formatted="false">"Salvează setările"</string>
+    <string name="text_118" formatted="false">"Setări salvate"</string>
+    <string name="text_119" formatted="false">"Verifică: "</string>
+    <string name="text_120" formatted="false">"Revino la valorile implicite"</string>
+    <string name="text_121" formatted="false">"Resetezi setările sesiunii? IP-ul și cheia de asociere rămân salvate."</string>
+    <string name="text_122" formatted="false">"Resetează"</string>
+    <string name="text_123" formatted="false">"Introdu manual…"</string>
+    <string name="text_124" formatted="false">"Help și comenzi"</string>
+    <string name="text_125" formatted="false">"Caută în manual"</string>
+    <string name="text_126" formatted="false">"Exemplu: audio, --crop, multitouch"</string>
+    <string name="text_127" formatted="false">"Niciun rezultat"</string>
+    <string name="text_128" formatted="false">"Copiază"</string>
+    <string name="text_129" formatted="false">"Șterge"</string>
+    <string name="text_130" formatted="false">"Exportă"</string>
+    <string name="text_131" formatted="false">"Jurnal complet salvat în fișier. Consola afișează ultimii 2 MB."</string>
+    <string name="text_132" formatted="false">"Comandă shell pe B: wm size / getprop …"</string>
+    <string name="text_133" formatted="false">"Execută pe B"</string>
+    <string name="text_134" formatted="false">"Conectează telefonul B înainte de a executa comenzi."</string>
+    <string name="text_135" formatted="false">"Portul trebuie să fie 1–65535"</string>
+    <string name="text_136" formatted="false">"Așteaptă rezultatul asocierii"</string>
+    <string name="text_137" formatted="false">"Introdu IP-ul telefonului B"</string>
+    <string name="text_138" formatted="false">"Setări: "</string>
+    <string name="text_139" formatted="false">"Introdu IP și codul de asociere cu 6 cifre"</string>
+    <string name="text_140" formatted="false">"Asociere în curs…"</string>
+    <string name="text_141" formatted="false">"Asociere reușită cu "</string>
+    <string name="text_142" formatted="false">". Folosește portul de CONECTARE pentru sesiune."</string>
+    <string name="text_143" formatted="false">"Asociat. Poți conecta telefonul B."</string>
+    <string name="text_144" formatted="false">"Asociere eșuată: "</string>
+    <string name="text_145" formatted="false">"Asociere eșuată; vezi Consolă"</string>
+    <string name="text_146" formatted="false">"Meniu sesiune"</string>
+    <string name="text_147" formatted="false">"Inițializare: "</string>
+    <string name="text_148" formatted="false">"Sesiune"</string>
+    <string name="text_149" formatted="false">"Închide meniul și revino la control"</string>
+    <string name="text_150" formatted="false">"Înapoi la control"</string>
+    <string name="text_151" formatted="false">"Sesiune închisă"</string>
+    <string name="text_152" formatted="false">"Control la distanță"</string>
+    <string name="text_153" formatted="false">"Alege interacțiunea. Meniul rămâne deschis până îl închizi."</string>
+    <string name="text_154" formatted="false">"Touch direct\nMultitouch"</string>
+    <string name="text_155" formatted="false">"Touchpad\nGesturi"</string>
+    <string name="text_156" formatted="false">"Touchpad\nButoane"</string>
+    <string name="text_157" formatted="false">"Stânga și Dreapta sunt suprapuse peste imagine, cu interior transparent. Poți ține Stânga și mișca cursorul simultan."</string>
+    <string name="text_158" formatted="false">"Zoom local pe A • modurile Touchpad"</string>
+    <string name="text_159" formatted="false">"Imagine: %.2f× • limită 6×"</string>
+    <string name="text_160" formatted="false">"Pinch mărește și decupează imaginea doar pe A. În zoom, deplasează imaginea cu două degete; la 1×, două degete paralele derulează pe B. Touch direct revine la 1×."</string>
+    <string name="text_161" formatted="false">"Acțiuni\nși instrumente"</string>
+    <string name="text_162" formatted="false">"Consolă\nși comenzi"</string>
+    <string name="text_163" formatted="false">"Deconectează sesiunea"</string>
+    <string name="text_164" formatted="false">"Canalul de control nu este activ"</string>
+    <string name="text_165" formatted="false">"Acțiuni și instrumente"</string>
+    <string name="text_166" formatted="false">"‹ Moduri de control"</string>
+    <string name="text_167" formatted="false">"Navigare pe telefonul B"</string>
+    <string name="text_168" formatted="false">"←\nÎnapoi"</string>
+    <string name="text_169" formatted="false">"▣\nRecente"</string>
+    <string name="text_170" formatted="false">"Volum"</string>
+    <string name="text_171" formatted="false">"Volum −"</string>
+    <string name="text_172" formatted="false">"Volum +"</string>
+    <string name="text_173" formatted="false">"Ecran și panouri"</string>
+    <string name="text_174" formatted="false">"Ecran\noprit"</string>
+    <string name="text_175" formatted="false">"Ecran\npornit"</string>
+    <string name="text_176" formatted="false">"Rotește\necranul"</string>
+    <string name="text_177" formatted="false">"Notificări"</string>
+    <string name="text_178" formatted="false">"Setări\nrapide"</string>
+    <string name="text_179" formatted="false">"Închide\npanourile B"</string>
+    <string name="text_180" formatted="false">"Text și aplicații"</string>
+    <string name="text_181" formatted="false">"Trimite text\nClipboard A → B"</string>
+    <string name="text_182" formatted="false">"Primește\nClipboard B → A"</string>
+    <string name="text_183" formatted="false">"Pornește o aplicație pe B"</string>
+    <string name="text_184" formatted="false">"Capturi și fișiere"</string>
+    <string name="text_185" formatted="false">"Captură PNG"</string>
+    <string name="text_186" formatted="false">"Exportă ultima\ncaptură / înregistrare"</string>
+    <string name="text_187" formatted="false">"Informații despre telefonul B • rezultatele apar în Consolă"</string>
+    <string name="text_188" formatted="false">"Ecrane"</string>
+    <string name="text_189" formatted="false">"Encodere"</string>
+    <string name="text_190" formatted="false">"Aplicații"</string>
+    <string name="text_191" formatted="false">"Camere"</string>
+    <string name="text_192" formatted="false">"Dimensiuni camere"</string>
+    <string name="text_193" formatted="false">"Deschide consola sesiunii"</string>
+    <string name="text_194" formatted="false">"Rezultatul este trimis în Consola sesiunii."</string>
+    <string name="text_195" formatted="false">"◧  Stânga"</string>
+    <string name="text_196" formatted="false">"Dreapta  ◨"</string>
+    <string name="text_197" formatted="false">"Buton stâng mouse; ține apăsat pentru drag"</string>
+    <string name="text_198" formatted="false">"Buton drept mouse"</string>
+    <string name="text_199" formatted="false">"Consolă • sesiune activă"</string>
+    <string name="text_200" formatted="false">"Comandă shell pe B"</string>
+    <string name="text_201" formatted="false">"Execută"</string>
+    <string name="text_202" formatted="false">"Oprește comenzile shell"</string>
+    <string name="text_203" formatted="false">"Trimite text pe B"</string>
+    <string name="text_204" formatted="false">"Lipește pe B"</string>
+    <string name="text_205" formatted="false">"Doar clipboard"</string>
+    <string name="text_206" formatted="false">"Pachet sau nume aplicație B"</string>
+    <string name="text_207" formatted="false">"Pornește"</string>
+    <string name="text_208" formatted="false">"Încă nu există un cadru"</string>
+    <string name="text_209" formatted="false">"Captură salvată: "</string>
+    <string name="text_210" formatted="false">"Captură salvată; o poți exporta din meniu."</string>
+    <string name="text_211" formatted="false">"Captură: "</string>
+    <string name="text_212" formatted="false">"Se închide sesiunea…"</string>
+    <string name="text_213" formatted="false">"Conectat la "</string>
+    <string name="text_214" formatted="false">"Telefon B"</string>
+    <string name="text_215" formatted="false">"Clipboard primit de la B • "</string>
+    <string name="text_216" formatted="false">" caractere"</string>
+    <string name="text_217" formatted="false">"Reconectare programată; poți opri din meniul sesiunii."</string>
+    <string name="text_218" formatted="false">"Consolă scrcpy"</string>
+    <string name="text_219" formatted="false">"Consolă copiată"</string>
+    <string name="text_220" formatted="false">"Jurnalul este prea mare pentru clipboard; folosește Exportă."</string>
+    <string name="text_221" formatted="false">"Copiere: "</string>
+    <string name="text_222" formatted="false">"Ștergere: "</string>
+    <string name="text_223" formatted="false">"Nu există încă o înregistrare finalizată sau o captură. Înregistrarea se finalizează la deconectare."</string>
+    <string name="text_224" formatted="false">"Destinație indisponibilă"</string>
+    <string name="text_225" formatted="false">"Fișier exportat"</string>
+    <string name="text_226" formatted="false">"Lipsesc SPS/PPS pentru înregistrarea H264"</string>
+    <string name="text_227" formatted="false">"MP4: nu au sosit cadre video; fișierul gol a fost eliminat."</string>
+    <string name="text_228" formatted="false">"MP4 salvat: "</string>
+    <string name="text_229" formatted="false">"B nu expune interfața ADB. Activează Depanare USB pe B și reconectează cablul."</string>
+    <string name="text_230" formatted="false">"Permisiunea USB pe A nu este acordată"</string>
+    <string name="text_231" formatted="false">"Nu pot deschide USB. Verifică rolul host/OTG pe A și reconectează cablul."</string>
+    <string name="text_232" formatted="false">"Interfața ADB USB este ocupată"</string>
+    <string name="text_233" formatted="false">"Inițializare endpoint USB IN eșuată"</string>
+    <string name="text_234" formatted="false">"Clientul ADB local nu a deschis transportul USB"</string>
+    <string name="text_235" formatted="false">"USB închis"</string>
+    <string name="text_236" formatted="false">"Scriere USB incompletă: "</string>
+    <string name="text_237" formatted="false">". Verifică legătura și alimentarea OTG."</string>
+    <string name="text_238" formatted="false">"Citirea USB nu a putut fi pusă în coadă"</string>
+    <string name="text_239" formatted="false">"Cerere USB anulată / cablu deconectat"</string>
+    <string name="text_240" formatted="false">"Transport USB oprit: "</string>
+    <string name="text_241" formatted="false">"Rezoluție maximă • px"</string>
+    <string name="text_242" formatted="false">"0 = dimensiunea originală; 1280 este un punct bun de pornire."</string>
+    <string name="text_243" formatted="false">"Bitrate video • biți/s"</string>
+    <string name="text_244" formatted="false">"8 Mbps = 8000000. Pentru Wi-Fi slab încearcă 2000000."</string>
+    <string name="text_245" formatted="false">"FPS maxim"</string>
+    <string name="text_246" formatted="false">"30 / 60 / 90 / 120; rata efectivă depinde de B și de rețea."</string>
+    <string name="text_247" formatted="false">"Codec video"</string>
+    <string name="text_248" formatted="false">"Sursă video"</string>
+    <string name="text_249" formatted="false">"ID ecran"</string>
+    <string name="text_250" formatted="false">"0 = ecran principal. Folosește Listă ecrane în Conectare."</string>
+    <string name="text_251" formatted="false">"Decupare"</string>
+    <string name="text_252" formatted="false">"lățime:înălțime:x:y, de exemplu 1080:1920:0:0. Gol = complet."</string>
+    <string name="text_253" formatted="false">"Orientare captură"</string>
+    <string name="text_254" formatted="false">"Gol = auto; 0, 90, 180, 270; @0 blochează orientarea."</string>
+    <string name="text_255" formatted="false">"Unghi video"</string>
+    <string name="text_256" formatted="false">"Rotire în grade. Aplicată de server, nu modifică telefonul A."</string>
+    <string name="text_257" formatted="false">"Encoder video"</string>
+    <string name="text_258" formatted="false">"Gol = automat; numele se obține prin Listă encodere."</string>
+    <string name="text_259" formatted="false">"Opțiuni encoder video"</string>
+    <string name="text_260" formatted="false">"Exemplu: i-frame-interval=1. Valori MediaFormat key[:type]=value."</string>
+    <string name="text_261" formatted="false">"Sunet de la B"</string>
+    <string name="text_262" formatted="false">"Codec audio"</string>
+    <string name="text_263" formatted="false">"Bitrate audio • biți/s"</string>
+    <string name="text_264" formatted="false">"Pentru AAC/Opus. RAW nu este comprimat."</string>
+    <string name="text_265" formatted="false">"Sursă audio"</string>
+    <string name="text_266" formatted="false">"Păstrează sunetul și pe B"</string>
+    <string name="text_267" formatted="false">"Encoder audio"</string>
+    <string name="text_268" formatted="false">"Gol = automat."</string>
+    <string name="text_269" formatted="false">"Opțiuni encoder audio"</string>
+    <string name="text_270" formatted="false">"key[:type]=value. Opțiune avansată, depinde de encoder."</string>
+    <string name="text_271" formatted="false">"ID cameră"</string>
+    <string name="text_272" formatted="false">"Gol = automat. Disponibil pentru sursa camera, Android 12+."</string>
+    <string name="text_273" formatted="false">"Camera preferată"</string>
+    <string name="text_274" formatted="false">"Dimensiune cameră"</string>
+    <string name="text_275" formatted="false">"Exemplu: 1920x1080. Gol = automat."</string>
+    <string name="text_276" formatted="false">"FPS cameră"</string>
+    <string name="text_277" formatted="false">"30 sau 60, dacă este suportat."</string>
+    <string name="text_278" formatted="false">"Cameră high speed"</string>
+    <string name="text_279" formatted="false">"Ecran virtual"</string>
+    <string name="text_280" formatted="false">"Gol = dezactivat; exemplu 1280x720/240. Depinde de Android-ul B."</string>
+    <string name="text_281" formatted="false">"Permite control"</string>
+    <string name="text_282" formatted="false">"Arată atingerile pe B"</string>
+    <string name="text_283" formatted="false">"Ține B activ la alimentare"</string>
+    <string name="text_284" formatted="false">"Stinge ecranul B la ieșire"</string>
+    <string name="text_285" formatted="false">"Primește clipboard de la B"</string>
+    <string name="text_286" formatted="false">"Reduce rezoluția la eroare"</string>
+    <string name="text_287" formatted="false">"Stinge ecranul B la conectare"</string>
+    <string name="text_288" formatted="false">"Înregistrează MP4 pe A"</string>
+    <string name="text_289" formatted="false">"Reconectează automat"</string>
+    <string name="text_290" formatted="false">"Viteză cursor"</string>
+    <string name="text_291" formatted="false">"0.2–5.0; modul mouse este trackpad relativ, cu cursor local."</string>
+    <string name="text_292" formatted="false">"Opțiuni suplimentare server"</string>
+    <string name="text_293" formatted="false">"Câte un key=value pe linie. Help conține catalogul complet; nu sunt argumente CLI --... ."</string>
+    <string name="text_294" formatted="false">"Opțiune invalidă: "</string>
+    <string name="text_295" formatted="false">". Folosește key=value."</string>
+    <string name="text_296" formatted="false">"Opțiune server necunoscută: "</string>
+    <string name="text_297" formatted="false">"Opțiunea "</string>
+    <string name="text_298" formatted="false">" este administrată de client."</string>
+    <string name="text_299" formatted="false">" nu poate fi negativ"</string>
+    <string name="text_300" formatted="false">"FPS invalid"</string>
+    <string name="text_301" formatted="false">"Viteza mouse trebuie să fie 0.2–5"</string>
+    <string name="text_302" formatted="false">"Codec video invalid"</string>
+    <string name="text_303" formatted="false">"Codec audio invalid"</string>
+    <string name="text_304" formatted="false">"Înregistrarea MP4 necesită video h264 și, dacă sunetul este activ, audio aac."</string>
+    <string name="app_name" formatted="false">"Scrcpy"</string>
+    <string name="language" formatted="false">"Limbă"</string>
+    <string name="language_hint" formatted="false">"Alege limba aplicației. Schimbarea se aplică imediat și este salvată."</string>
+    <string name="option_display" formatted="false">"Ecran"</string>
+    <string name="option_camera" formatted="false">"Cameră"</string>
+    <string name="option_front" formatted="false">"Față"</string>
+    <string name="option_back" formatted="false">"Spate"</string>
+    <string name="option_external" formatted="false">"Externă"</string>
+    <string name="option_output" formatted="false">"Ieșire audio dispozitiv"</string>
+    <string name="option_playback" formatted="false">"Redare aplicații"</string>
+    <string name="option_mic" formatted="false">"Microfon"</string>
+    <string name="option_mic_unprocessed" formatted="false">"Microfon • neprocesat"</string>
+    <string name="option_mic_camcorder" formatted="false">"Microfon • cameră video"</string>
+    <string name="option_mic_voice_recognition" formatted="false">"Microfon • recunoaștere vocală"</string>
+    <string name="option_mic_voice_communication" formatted="false">"Microfon • comunicare vocală"</string>
+    <string name="option_voice_call" formatted="false">"Apel vocal"</string>
+    <string name="option_voice_call_uplink" formatted="false">"Apel vocal • transmisie"</string>
+    <string name="option_voice_call_downlink" formatted="false">"Apel vocal • recepție"</string>
+    <string name="option_voice_performance" formatted="false">"Interpretare vocală"</string>
+    <string name="help_intro" formatted="false">"Ghiduri, controale și referințe pentru comenzi. Alege o categorie sau caută."</string>
+    <string name="help_search_all" formatted="false">"Caută în toate categoriile…"</string>
+    <string name="help_search_topic" formatted="false">"Caută în această categorie…"</string>
+    <string name="help_all_topics" formatted="false">"‹ Toate categoriile"</string>
+    <string name="help_copy_command" formatted="false">"Copiază comanda"</string>
+    <string name="help_command_copied" formatted="false">"Comandă copiată"</string>
+</resources>

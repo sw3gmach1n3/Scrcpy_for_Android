@@ -1,0 +1,18 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'ro.sw3g.scrcpy'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'ro.sw3g.scrcpy'
+        minSdk 26
+        targetSdk 35
+        versionCode 9
+        versionName '1.5.1-foreground-usb'
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    packaging { resources.excludes += ['META-INF/DEPENDENCIES', 'META-INF/LICENSE*', 'META-INF/NOTICE*'] }
+}
+dependencies {
+    implementation 'com.github.MuntashirAkon:libadb-android:3.1.1'
+    implementation 'org.conscrypt:conscrypt-android:2.5.3'
+}

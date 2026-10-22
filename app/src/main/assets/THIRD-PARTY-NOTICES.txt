@@ -1,0 +1,22 @@
+Scrcpy client sources: generated for sw3gmach1n3. No affiliation with Genymobile.
+
+Bundled server and desktop manual: scrcpy 3.3.4
+Copyright (C) 2018-2026 Romain Vimont and scrcpy contributors.
+Source: https://github.com/Genymobile/scrcpy/tree/v3.3.4
+Binary: https://github.com/Genymobile/scrcpy/releases/download/v3.3.4/scrcpy-server-v3.3.4
+Apache License 2.0, included as Apache-2.0.txt. Server binary is unmodified.
+Documentation has been converted from roff to plain text; Romanian app instructions and examples have been added.
+
+ADB/pairing library: LibADB Android 3.1.1
+Copyright 2021 Muntashir Al-Islam
+https://github.com/MuntashirAkon/libadb-android/tree/3.1.1
+Dual license GPL-3.0-or-later OR Apache-2.0. This project uses the Apache-2.0 alternative.
+Transitive dependencies retain their respective licenses (including Spake2 and native crypto components). Consult the Gradle dependency artifacts and upstream repositories for source and full license texts.
+
+Conscrypt Android 2.5.3
+https://github.com/google/conscrypt
+Apache License 2.0 and third-party notices contained in its distribution.
+
+Gradle wrapper 8.9
+https://github.com/gradle/gradle/tree/v8.9.0
+Apache License 2.0. Original wrapper JAR bundled without modification; simplified launcher scripts are supplied.
